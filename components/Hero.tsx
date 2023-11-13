@@ -23,17 +23,17 @@ const Hero = () => {
     >
       {/* HERO TEXT CONTAINER */}
       <div className='md:w-1/2'>
-        <h1 className={twMerge('h1', 'opacity-80')}>
+        <h1 className={twMerge('h1', 'opacity-80 md:leading-[4rem]')}>
           Find, book, rent a car - quick and super easy!
         </h1>
-        <h2 className={twMerge('h2', 'opacity-60')}>
+        <h2 className={twMerge('h2', 'opacity-60 md:leading-10')}>
           Streamline your car rental experience with our effortless booking
           process.
         </h2>
 
         <CustomButton
           content='Explore cars'
-          className='btn-large btn-gradient gap-4'
+          className='btn-large btn-gradient my-4 gap-4'
           handleClick={scrollToTop}
         />
       </div>

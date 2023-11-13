@@ -6,7 +6,7 @@ import { twMerge } from 'tailwind-merge'
 
 const Navbar = () => {
   return (
-    <div id='navbar'>
+    <header id='header'>
       <Link href='/' className='flex items-center gap-2'>
         <div className='from-primary to-primary-light flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r'>
           <FontAwesomeIcon icon={faCarSide} className='text-light h-8 w-8' />
@@ -24,7 +24,7 @@ const Navbar = () => {
 
       {/* AUTH */}
       <GoogleSignIn />
-    </div>
+    </header>
   )
 }
 

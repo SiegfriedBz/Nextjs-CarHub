@@ -24,14 +24,14 @@ body {
 }
 
 @layer components {
-  #navbar {
+  #header {
     @apply border-primary bg-light fixed left-0 right-0 top-0 z-50
       flex h-[var(--navbar-height)] w-full items-center justify-between border-b p-4 lg:px-16 xl:px-32 2xl:px-48;
   }
 
   #footer {
     @apply border-primary 
-      bg-light flex h-[calc(var(--navbar-height)/2)] items-center justify-between border-t p-4 lg:px-16 xl:px-32 2xl:px-48;
+      bg-light flex h-[calc(var(--navbar-height)*2/3)] items-center justify-between border-t p-4 lg:px-16 xl:px-32 2xl:px-48;
   }
 
   .hero-bg {

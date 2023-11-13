@@ -19,7 +19,7 @@ body {
     @apply my-2 text-2xl;
   }
   section {
-    @apply mt-[var(--navbar-height)] min-h-[calc(100vh-var(--navbar-height))] p-4 lg:px-16 xl:px-32 2xl:px-48;
+    @apply mt-[var(--navbar-height)] min-h-[calc(100dvh-var(--navbar-height))] p-4 lg:px-16 xl:px-32 2xl:px-48;
   }
 }
 
@@ -48,9 +48,9 @@ body {
     @apply rounded-md px-4 py-2 text-sm hover:scale-105;
   }
   .btn-outline {
-    @apply border-primary text-primary hover:bg-primary border-2 hover:text-white;
+    @apply border-dark/50 text-dark/50 hover:bg-dark hover:text-light border-2;
   }
   .btn-gradient {
-    @apply from-primary to-primary-light bg-gradient-to-r font-bold text-white;
+    @apply from-primary to-primary-light text-light bg-gradient-to-r font-bold;
   }
 }

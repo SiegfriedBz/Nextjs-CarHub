@@ -23,7 +23,7 @@ const Hero = () => {
     >
       {/* HERO TEXT CONTAINER */}
       <div className='md:w-1/2'>
-        <h1 className={twMerge('h1', 'opacity-80 md:leading-[4rem]')}>
+        <h1 className={twMerge('h1', 'opacity-70 md:leading-[4rem]')}>
           Find, book, rent a car - quick and super easy!
         </h1>
         <h2 className={twMerge('h2', 'opacity-60 md:leading-10')}>
@@ -40,7 +40,7 @@ const Hero = () => {
       {/* HERO BG-IMG CONTAINER */}
       <div className='hero-bg'></div>
       {/* HERO IMG CONTAINER */}
-      <div className='relative w-full md:flex-1'>
+      <div className='relative flex-1'>
         <Image
           src='/hero.png'
           width={480}

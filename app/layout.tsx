@@ -1,11 +1,11 @@
 import { getServerSession } from 'next-auth'
-import { authOptions } from './api/auth/[...nextauth]/route'
 import type { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
 import './globals.css'
 import SessionProvider from '@/context/SessionProvider'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import { authOptions } from '@/utils/authOptions'
 
 const roboto = Roboto({
   weight: ['100', '300', '400', '700'],

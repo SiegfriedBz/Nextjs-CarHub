@@ -1,5 +1,5 @@
 export type CustomButtonProps = {
-  type?: 'button' | 'submit' | 'reset'
+  btnType?: 'button' | 'submit' | 'reset'
   content: string
   className?: string
   src?: string

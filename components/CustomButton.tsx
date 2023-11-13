@@ -5,7 +5,7 @@ import { twMerge } from 'tailwind-merge'
 import type { CustomButtonProps } from '@/types'
 
 const CustomButton = ({
-  type = 'button',
+  btnType = 'button',
   content,
   className = '',
   src,
@@ -15,7 +15,7 @@ const CustomButton = ({
 }: CustomButtonProps) => {
   return (
     <button
-      type={type}
+      type={btnType}
       onClick={handleClick}
       className={twMerge(
         'btn flex max-w-max items-center justify-between',

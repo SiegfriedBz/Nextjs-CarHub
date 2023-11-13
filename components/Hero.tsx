@@ -43,9 +43,8 @@ const Hero = () => {
       <div className='relative w-full md:flex-1'>
         <Image
           src='/hero.png'
-          width={480}
-          height={480}
-          className='h-full w-full object-cover'
+          fill={true}
+          className='object-cover'
           alt='hero'
         />
       </div>

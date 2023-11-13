@@ -3,25 +3,54 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+  --navbar-height: 6rem;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+}
+
+@layer base {
+  h1,
+  .h1 {
+    @apply my-4 text-5xl font-bold;
+  }
+  h2,
+  .h2 {
+    @apply my-2 text-2xl;
+  }
+  section {
+    @apply mt-[var(--navbar-height)] min-h-[calc(100vh-var(--navbar-height))] p-4 lg:px-16 xl:px-32 2xl:px-48;
+  }
+}
+
+@layer components {
+  #navbar {
+    @apply border-primary bg-light fixed left-0 right-0 top-0 z-50
+      flex h-[var(--navbar-height)] w-full items-center justify-between border-b p-4 lg:px-16 xl:px-32 2xl:px-48;
+  }
+
+  #footer {
+    @apply border-primary 
+      bg-light flex h-[calc(var(--navbar-height)/2)] items-center justify-between border-t p-4 lg:px-16 xl:px-32 2xl:px-48;
+  }
+
+  .hero-bg {
+    @apply absolute bottom-[6rem] left-0 right-0 h-[33%] w-full translate-y-1/2 bg-[url('/hero-bg.png')] bg-cover bg-center bg-no-repeat md:left-1/2 md:top-1/2 md:h-1/2 md:w-1/2 md:-translate-y-1/2;
+  }
+
+  .btn {
+    @apply transition duration-300 ease-in-out;
+  }
+  .btn-large {
+    @apply rounded-lg px-8 py-4 text-lg uppercase tracking-wide hover:scale-110;
+  }
+  .btn-small {
+    @apply rounded-md px-4 py-2 text-sm hover:scale-105;
+  }
+  .btn-outline {
+    @apply border-primary text-primary hover:bg-primary border-2 hover:text-white;
+  }
+  .btn-gradient {
+    @apply from-primary to-primary-light bg-gradient-to-r font-bold text-white;
+  }
 }

@@ -40,11 +40,12 @@ const Hero = () => {
       {/* HERO BG-IMG CONTAINER */}
       <div className='hero-bg'></div>
       {/* HERO IMG CONTAINER */}
-      <div className='relative w-full md:flex-1'>
+      <div className='relative flex-1'>
         <Image
           src='/hero.png'
-          fill={true}
-          className='object-cover'
+          width={480}
+          height={480}
+          className='h-full w-full object-cover'
           alt='hero'
         />
       </div>

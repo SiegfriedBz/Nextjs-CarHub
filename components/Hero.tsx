@@ -19,7 +19,7 @@ const Hero = () => {
       id='hero'
       ref={topHeroRef}
       // navbar-height 6rem
-      className='flex scroll-mt-[6rem] flex-col items-center justify-center gap-8 md:flex-row md:gap-4'
+      className='flex scroll-mt-[6rem] flex-col items-center justify-center md:flex-row md:gap-4'
     >
       {/* HERO TEXT CONTAINER */}
       <div className='md:w-1/2'>
@@ -40,7 +40,7 @@ const Hero = () => {
       {/* HERO BG-IMG CONTAINER */}
       <div className='hero-bg'></div>
       {/* HERO IMG CONTAINER */}
-      <div className='relative flex-1'>
+      <div className='relative flex flex-1 items-center bg-[url("/hero-bg.png")] bg-cover bg-center bg-no-repeat p-4 md:bg-none md:p-0'>
         <Image
           src='/hero.png'
           width={480}

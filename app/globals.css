@@ -35,7 +35,7 @@ body {
   }
 
   .hero-bg {
-    @apply absolute bottom-0 left-0 right-0 h-[33%] w-full translate-y-1/2 bg-[url('/hero-bg.png')] bg-cover bg-center bg-no-repeat sm:bottom-[6rem] sm:h-1/2 md:left-1/2 md:top-1/2 md:h-1/2 md:w-1/2 md:-translate-y-1/2;
+    @apply md:absolute md:bottom-[6rem] md:left-1/2 md:top-1/2 md:block md:h-1/2 md:w-1/2 md:-translate-y-1/2 md:bg-[url('/hero-bg.png')] md:bg-cover md:bg-center md:bg-no-repeat;
   }
 
   .btn {

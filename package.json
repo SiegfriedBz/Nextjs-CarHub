@@ -13,11 +13,13 @@
     "@fortawesome/free-brands-svg-icons": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "framer-motion": "^10.16.5",
     "next": "14.0.2",
     "next-auth": "^4.24.5",
     "react": "^18",
     "react-dom": "^18",
-    "tailwind-merge": "^2.0.0"
+    "tailwind-merge": "^2.0.0",
+    "zustand": "^4.4.6"
   },
   "devDependencies": {
     "@types/node": "^20",

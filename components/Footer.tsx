@@ -1,15 +1,55 @@
 import Link from 'next/link'
 import { twMerge } from 'tailwind-merge'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLinkedinIn, faGithubAlt } from '@fortawesome/free-brands-svg-icons'
+import SocialLinks from './SocialLinks'
 
 const Footer = () => {
   const year = new Date().getFullYear()
 
   return (
     <footer id='footer'>
-      {/* BRAND */}
-      <div className='flex items-center gap-2'>
+      {/* MOBILE ONLY */}
+
+      <div className='flex w-full flex-col items-center justify-between md:hidden'>
+        <div className='flex w-full justify-between'>
+          {/* links */}
+          <ul className='flex gap-2'>
+            <li>
+              <Link
+                href='/company'
+                className='h5 underline-gradient-link from-primary-dark to-primary-light bg-gradient-to-r bg-clip-text text-transparent'
+              >
+                Company
+              </Link>
+            </li>
+            <li>
+              <Link
+                href='/about'
+                className='h5 underline-gradient-link from-primary-dark to-primary-light bg-gradient-to-r bg-clip-text text-transparent'
+              >
+                About
+              </Link>
+            </li>
+          </ul>
+          {/* social */}
+          <SocialLinks />
+        </div>
+
+        {/* brand */}
+        <span className='text-sm'>
+          <span>&copy;{year} </span>
+          <Link
+            href='/'
+            className='from-primary-dark underline-gradient-link to-primary-light bg-gradient-to-r bg-clip-text italic text-transparent'
+          >
+            CarHub
+          </Link>
+          <span className=''> All Rights Reserved.</span>
+        </span>
+      </div>
+
+      {/* DESKTOP */}
+      <div className='hidden w-full items-center justify-between gap-2 md:flex'>
+        {/* brand */}
         <h5 className='h5'>
           <span className=''>&copy;{year} </span>
           <Link
@@ -23,53 +63,8 @@ const Footer = () => {
           </Link>
           <span className='h5'> All Rights Reserved.</span>
         </h5>
-      </div>
-
-      {/* MOBILE ONLY */}
-      <div className='flex md:hidden'>
-        <ul className='flex gap-8'>
-          <li>
-            <Link
-              href='/about'
-              className='h5 underline-gradient-link from-primary-dark to-primary-light bg-gradient-to-r bg-clip-text text-transparent'
-            >
-              About
-            </Link>
-          </li>
-          <li>
-            <Link
-              href='/company'
-              className='h5 underline-gradient-link from-primary-dark to-primary-light bg-gradient-to-r bg-clip-text text-transparent'
-            >
-              Company
-            </Link>
-          </li>
-        </ul>
-      </div>
-
-      {/* DESKTOP */}
-      <div className='hidden md:flex'>
+        {/* links */}
         <ul className='flex gap-16 lg:gap-24'>
-          <li className='text-center'>
-            <Link
-              href='/about'
-              className='underline-gradient-link h5 from-primary-dark to-primary-light bg-gradient-to-r bg-clip-text text-lg font-semibold text-transparent'
-            >
-              About
-            </Link>
-            <ul>
-              <li>
-                <Link href='/about#how-it-works' className='h6'>
-                  How it works
-                </Link>
-              </li>
-              <li>
-                <Link href='/about' className='h6'>
-                  Featured
-                </Link>
-              </li>
-            </ul>
-          </li>
           <li className='text-center'>
             <Link
               href='/company'
@@ -92,6 +87,26 @@ const Footer = () => {
           </li>
           <li className='text-center'>
             <Link
+              href='/about'
+              className='underline-gradient-link h5 from-primary-dark to-primary-light bg-gradient-to-r bg-clip-text text-lg font-semibold text-transparent'
+            >
+              About
+            </Link>
+            <ul>
+              <li>
+                <Link href='/about#how-it-works' className='h6'>
+                  How it works
+                </Link>
+              </li>
+              <li>
+                <Link href='/about' className='h6'>
+                  Featured
+                </Link>
+              </li>
+            </ul>
+          </li>
+          <li className='hidden text-center lg:block'>
+            <Link
               href='/company'
               className='h5 underline-gradient-link from-primary-dark to-primary-light bg-gradient-to-r bg-clip-text text-lg font-semibold text-transparent'
             >
@@ -111,27 +126,9 @@ const Footer = () => {
             </ul>
           </li>
         </ul>
+        {/* social */}
+        <SocialLinks />
       </div>
-
-      {/* SOCIAL */}
-      <ul className='flex gap-4'>
-        <li>
-          <a href={process.env.NEXT_PUBLIC_LINKEDIN_URL || '/'} target='_blank'>
-            <FontAwesomeIcon
-              icon={faLinkedinIn}
-              className='text-primary-dark h-6 w-6 transition duration-300 ease-in-out hover:scale-110 md:h-8 md:w-8'
-            />
-          </a>
-        </li>
-        <li>
-          <a href={process.env.NEXT_PUBLIC_GITHUB_URL || ''} target='_blank'>
-            <FontAwesomeIcon
-              icon={faGithubAlt}
-              className='text-primary-dark h-6 w-6 transition duration-300 ease-in-out hover:scale-110 md:h-8 md:w-8'
-            />
-          </a>
-        </li>
-      </ul>
     </footer>
   )
 }

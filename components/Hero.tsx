@@ -33,7 +33,7 @@ const Hero = () => {
 
         <CustomButton
           content='Explore cars'
-          className='btn-large btn-gradient my-4 gap-4'
+          className='btn-small sm:btn-large btn-gradient my-4 gap-4'
           handleClick={scrollToTop}
         />
       </div>

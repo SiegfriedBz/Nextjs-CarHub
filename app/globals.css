@@ -12,35 +12,44 @@ body {
 @layer base {
   h1,
   .h1 {
-    @apply my-4 text-3xl font-semibold sm:text-4xl md:text-5xl md:font-bold lg:text-6xl;
+    @apply text-primary-dark my-4 text-3xl font-semibold sm:text-4xl md:text-5xl md:font-bold lg:text-6xl;
   }
 
   h2,
   .h2 {
-    @apply my-2 text-xl sm:text-2xl md:text-3xl lg:text-4xl;
+    @apply text-primary-dark my-2 text-xl sm:text-2xl md:text-3xl lg:text-4xl;
   }
 
   h3,
   .h3 {
-    @apply my-1 text-xl md:text-2xl;
+    @apply text-primary-dark my-1 text-xl md:text-2xl;
   }
 
   h4,
   .h4 {
-    @apply text-lg md:text-xl;
+    @apply text-primary-dark text-lg md:text-xl;
   }
 
   h5,
   .h5 {
-    @apply text-sm md:text-base;
+    @apply text-primary-dark text-sm md:text-base;
   }
   h6,
   .h6 {
-    @apply text-sm;
+    @apply text-primary-dark text-sm;
+  }
+
+  p {
+    @apply text-primary-dark;
   }
 
   section {
-    @apply mt-[var(--navbar-height)] min-h-[calc(100dvh-var(--navbar-height))] p-4 lg:px-16 xl:px-32 2xl:px-48;
+    @apply p-4 lg:px-16 xl:px-32 2xl:px-48;
+  }
+  section {
+    .section-top {
+      @apply mt-[var(--navbar-height)] min-h-[calc(100dvh-var(--navbar-height))] p-4 lg:px-16 xl:px-32 2xl:px-48;
+    }
   }
 }
 
@@ -81,7 +90,7 @@ body {
   }
 
   .hero-bg {
-    @apply md:absolute md:bottom-[6rem] md:left-1/2 md:top-1/2 md:block md:h-1/2 md:w-1/2 md:-translate-y-1/2 md:bg-[url('/hero-bg.png')] md:bg-cover md:bg-center md:bg-no-repeat;
+    @apply md:absolute md:bottom-[6rem] md:left-1/2 md:top-1/2 md:block md:h-1/2 md:w-[44%] md:-translate-y-1/2 md:bg-[url('/hero-bg.png')] md:bg-cover md:bg-center md:bg-no-repeat;
   }
 
   .btn {
@@ -97,7 +106,7 @@ body {
   }
 
   .btn-outline {
-    @apply border-primary-dark text-dark/50 hover:from-primary-dark hover:to-dark/80 hover:text-light border-2 transition duration-500 ease-in-out hover:scale-100 hover:bg-gradient-to-r;
+    @apply text-dark/50 hover:from-primary-dark hover:to-dark/80 hover:text-light border-2 border-gray-300 transition duration-500 ease-in-out hover:scale-100 hover:bg-gradient-to-r;
   }
 
   .btn-gradient {

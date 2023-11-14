@@ -4,9 +4,12 @@ import { useRef } from 'react'
 import Image from 'next/image'
 import { twMerge } from 'tailwind-merge'
 import CustomButton from './CustomButton'
+import { motion } from 'framer-motion'
+
+const MotionImage = motion(Image)
 
 const Hero = () => {
-  const topHeroRef = useRef<HTMLElement>(null)
+  const topHeroRef = useRef<HTMLDivElement>(null)
 
   const scrollToTop = () => {
     if (topHeroRef.current != null) {
@@ -15,11 +18,11 @@ const Hero = () => {
   }
 
   return (
-    <section
+    <div
       id='hero'
       ref={topHeroRef}
       // navbar-height 6rem
-      className='flex scroll-mt-[6rem] flex-col items-center justify-center md:flex-row md:gap-4'
+      className='section-top flex scroll-mt-[6rem] flex-col items-center justify-center md:flex-row md:gap-4'
     >
       {/* HERO TEXT CONTAINER */}
       <div className='md:w-1/2'>
@@ -51,7 +54,10 @@ const Hero = () => {
       <div className='hero-bg'></div>
       {/* HERO IMG CONTAINER */}
       <div className='relative flex flex-1 items-center bg-[url("/hero-bg.png")] bg-cover bg-center bg-no-repeat p-4 md:bg-none md:p-0'>
-        <Image
+        <MotionImage
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: [0.5, 1.25, 1] }}
+          transition={{ delay: 0.1, duration: 0.5 }}
           src='/hero.png'
           width={480}
           height={480}
@@ -59,7 +65,7 @@ const Hero = () => {
           alt='hero'
         />
       </div>
-    </section>
+    </div>
   )
 }
 

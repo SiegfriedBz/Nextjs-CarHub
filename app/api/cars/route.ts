@@ -30,8 +30,8 @@ export async function GET(request: NextRequest, response: NextResponse) {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': process.env.RAPID_API_KEY as string,
-      'X-RapidAPI-Host': process.env.RAPID_API_HOST as string,
+      'X-RapidAPI-Key': process.env.NEXT_PUBLIC_RAPID_API_KEY as string,
+      'X-RapidAPI-Host': process.env.NEXT_PUBLIC_RAPID_API_HOST as string,
     },
   }
 

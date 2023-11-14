@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import { twMerge } from 'tailwind-merge'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCarSide } from '@fortawesome/free-solid-svg-icons'
 import { faLinkedinIn, faGithubAlt } from '@fortawesome/free-brands-svg-icons'
 
 const Footer = () => {
@@ -10,31 +9,38 @@ const Footer = () => {
   return (
     <footer id='footer'>
       {/* BRAND */}
-      <Link href='/' className='flex items-center gap-2'>
+      <div className='flex items-center gap-2'>
         <h5 className='h5'>
           <span className=''>&copy;{year} </span>
-          <span
+          <Link
+            href='/'
             className={twMerge(
               'h5',
-              'from-primary to-primary-light bg-gradient-to-r bg-clip-text text-lg italic text-transparent'
+              'from-primary-dark underline-gradient-link to-primary-light bg-gradient-to-r bg-clip-text text-lg italic text-transparent'
             )}
           >
             CarHub
-          </span>
+          </Link>
           <span className='h5'> All Rights Reserved.</span>
         </h5>
-      </Link>
+      </div>
 
       {/* MOBILE ONLY */}
       <div className='flex md:hidden'>
         <ul className='flex gap-8'>
           <li>
-            <Link href='/about' className='h5'>
+            <Link
+              href='/about'
+              className='h5 underline-gradient-link from-primary-dark to-primary-light bg-gradient-to-r bg-clip-text text-transparent'
+            >
               About
             </Link>
           </li>
           <li>
-            <Link href='/company' className='h5'>
+            <Link
+              href='/company'
+              className='h5 underline-gradient-link from-primary-dark to-primary-light bg-gradient-to-r bg-clip-text text-transparent'
+            >
               Company
             </Link>
           </li>
@@ -45,7 +51,10 @@ const Footer = () => {
       <div className='hidden md:flex'>
         <ul className='flex gap-16 lg:gap-24'>
           <li className='text-center'>
-            <Link href='/about' className='h5 font-semibold'>
+            <Link
+              href='/about'
+              className='underline-gradient-link h5 from-primary-dark to-primary-light bg-gradient-to-r bg-clip-text text-lg font-semibold text-transparent'
+            >
               About
             </Link>
             <ul>
@@ -62,7 +71,10 @@ const Footer = () => {
             </ul>
           </li>
           <li className='text-center'>
-            <Link href='/company' className='h5 font-semibold'>
+            <Link
+              href='/company'
+              className='underline-gradient-link h5 from-primary-dark to-primary-light bg-gradient-to-r bg-clip-text text-lg font-semibold text-transparent'
+            >
               Company
             </Link>
             <ul>
@@ -79,7 +91,10 @@ const Footer = () => {
             </ul>
           </li>
           <li className='text-center'>
-            <Link href='/company' className='h5 font-semibold'>
+            <Link
+              href='/company'
+              className='h5 underline-gradient-link from-primary-dark to-primary-light bg-gradient-to-r bg-clip-text text-lg font-semibold text-transparent'
+            >
               Socials
             </Link>
             <ul>
@@ -104,7 +119,7 @@ const Footer = () => {
           <a href={process.env.NEXT_PUBLIC_LINKEDIN_URL || '/'} target='_blank'>
             <FontAwesomeIcon
               icon={faLinkedinIn}
-              className='h-6 w-6 md:h-8 md:w-8'
+              className='text-primary-dark h-6 w-6 transition duration-300 ease-in-out hover:scale-110 md:h-8 md:w-8'
             />
           </a>
         </li>
@@ -112,7 +127,7 @@ const Footer = () => {
           <a href={process.env.NEXT_PUBLIC_GITHUB_URL || ''} target='_blank'>
             <FontAwesomeIcon
               icon={faGithubAlt}
-              className='h-6 w-6 md:h-8 md:w-8'
+              className='text-primary-dark h-6 w-6 transition duration-300 ease-in-out hover:scale-110 md:h-8 md:w-8'
             />
           </a>
         </li>

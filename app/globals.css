@@ -45,13 +45,38 @@ body {
 }
 
 @layer components {
+  a.underline-gradient-link {
+    @apply hover:after:bg-primary/75
+      focus:after:bg-primary/75
+      active:after:bg-primary/75
+
+      relative
+      transition-all
+      duration-300
+
+      ease-in-out
+      after:absolute
+      after:bottom-[-0.1em]
+      
+      after:left-0
+
+      after:h-[0.1em]
+      after:w-0 
+      after:transition-all 
+      after:duration-500 
+      after:ease-in-out 
+      after:content-[""]
+      hover:after:w-full
+      focus:after:w-full
+      active:after:w-full;
+  }
   #header {
-    @apply border-primary bg-light fixed left-0 right-0 top-0 z-50
+    @apply border-primary-dark bg-light fixed left-0 right-0 top-0 z-50
       flex h-[var(--navbar-height)] w-full items-center justify-between border-b p-4 lg:px-16 xl:px-32 2xl:px-48;
   }
 
   #footer {
-    @apply border-primary 
+    @apply border-primary-dark 
       bg-light flex h-[calc(var(--navbar-height)*2/3)] items-center justify-between border-t p-4 md:h-[var(--navbar-height)] lg:px-16 xl:px-32 2xl:px-48;
   }
 
@@ -72,7 +97,7 @@ body {
   }
 
   .btn-outline {
-    @apply border-dark/50 text-dark/50 hover:bg-dark hover:text-light border-2;
+    @apply border-primary-dark text-dark/50 hover:from-primary-dark hover:to-dark/80 hover:text-light  border-2 hover:scale-100 hover:bg-gradient-to-r;
   }
 
   .btn-gradient {

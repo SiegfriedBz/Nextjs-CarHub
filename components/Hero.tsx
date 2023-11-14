@@ -23,10 +23,20 @@ const Hero = () => {
     >
       {/* HERO TEXT CONTAINER */}
       <div className='md:w-1/2'>
-        <h1 className={twMerge('h1', 'opacity-70 md:leading-[4rem]')}>
+        <h1
+          className={twMerge(
+            'h1',
+            'from-primary-dark to-dark/70 bg-gradient-to-r bg-clip-text text-transparent md:leading-[4rem]'
+          )}
+        >
           Find, book, rent a car - quick and super easy!
         </h1>
-        <h2 className={twMerge('h2', 'opacity-60 md:leading-10')}>
+        <h2
+          className={twMerge(
+            'h2',
+            'from-primary-dark to-dark/70 bg-gradient-to-r bg-clip-text text-transparent opacity-70 md:leading-10'
+          )}
+        >
           Streamline your car rental experience with our effortless booking
           process.
         </h2>

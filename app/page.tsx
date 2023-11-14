@@ -6,7 +6,9 @@ import type { CarType } from '@/types'
 const getData = async () => {
   // fetch all cars - limit to 16
   try {
-    const response = await fetch(`${process.env.NEXTAUTH_URL}/api/cars`)
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/cars`
+    )
 
     if (!response.ok) throw new Error('Error fetching cars')
 

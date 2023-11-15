@@ -12,31 +12,31 @@ body {
 @layer base {
   h1,
   .h1 {
-    @apply text-primary-dark my-4 text-3xl font-semibold sm:text-4xl md:text-5xl md:font-bold lg:text-6xl;
+    @apply my-4 text-3xl font-semibold text-primary-dark sm:text-4xl md:text-5xl md:font-bold lg:text-6xl;
   }
 
   h2,
   .h2 {
-    @apply text-primary-dark my-2 text-xl sm:text-2xl md:text-3xl lg:text-4xl;
+    @apply my-2 text-xl text-primary-dark sm:text-2xl md:text-3xl lg:text-4xl;
   }
 
   h3,
   .h3 {
-    @apply text-primary-dark my-1 text-xl md:text-2xl;
+    @apply my-1 text-xl text-primary-dark md:text-2xl;
   }
 
   h4,
   .h4 {
-    @apply text-primary-dark text-lg md:text-xl;
+    @apply text-lg text-primary-dark md:text-xl;
   }
 
   h5,
   .h5 {
-    @apply text-primary-dark text-sm md:text-base;
+    @apply text-sm text-primary-dark md:text-base;
   }
   h6,
   .h6 {
-    @apply text-primary-dark text-sm;
+    @apply text-sm text-primary-dark;
   }
 
   p {
@@ -55,38 +55,38 @@ body {
 
 @layer components {
   a.underline-gradient-link {
-    @apply hover:after:bg-primary/75
-      focus:after:bg-primary/75
-      active:after:bg-primary/75
-
-      relative
+    @apply relative
       transition-all
       duration-300
 
       ease-in-out
       after:absolute
       after:bottom-[-0.1em]
-      
-      after:left-0
 
+      after:left-0
       after:h-[0.1em]
-      after:w-0 
-      after:transition-all 
-      after:duration-500 
+      after:w-0
+      
+      after:transition-all
+
+      after:duration-500
       after:ease-in-out 
-      after:content-[""]
-      hover:after:w-full
+      after:content-[""] 
+      hover:after:w-full 
+      hover:after:bg-primary/75 
       focus:after:w-full
-      active:after:w-full;
+      focus:after:bg-primary/75
+      active:after:w-full
+      active:after:bg-primary/75;
   }
   #header {
-    @apply border-primary-dark bg-light fixed left-0 right-0 top-0 z-50
-      flex h-[var(--navbar-height)] w-full items-center justify-between border-b p-4 lg:px-16 xl:px-32 2xl:px-48;
+    @apply fixed left-0 right-0 top-0 z-[1000] flex h-[var(--navbar-height)]
+      w-full items-center justify-between border-b border-primary-dark bg-light p-4 lg:px-16 xl:px-32 2xl:px-48;
   }
 
   #footer {
-    @apply border-primary-dark 
-      bg-light flex h-[calc(var(--navbar-height)*2/3)] items-center justify-between border-t p-4 md:h-[var(--navbar-height)] lg:px-16 xl:px-32 2xl:px-48;
+    @apply flex 
+      h-[calc(var(--navbar-height)*2/3)] items-center justify-between border-t border-primary-dark bg-light p-4 md:h-[var(--navbar-height)] lg:px-16 xl:px-32 2xl:px-48;
   }
 
   .hero-bg {
@@ -106,10 +106,10 @@ body {
   }
 
   .btn-outline {
-    @apply text-dark/50 hover:from-primary-dark hover:to-dark/80 hover:text-light border-2 border-gray-300 transition duration-500 ease-in-out hover:scale-100 hover:bg-gradient-to-r;
+    @apply border-2 border-gray-300 text-dark/50 transition duration-500 ease-in-out hover:scale-100 hover:bg-gradient-to-r hover:from-primary-dark hover:to-dark/80 hover:text-light;
   }
 
   .btn-gradient {
-    @apply from-primary to-primary-light text-light bg-gradient-to-r font-bold;
+    @apply bg-gradient-to-r from-primary to-primary-light font-bold text-light;
   }
 }

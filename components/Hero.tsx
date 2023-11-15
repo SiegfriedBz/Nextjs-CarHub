@@ -29,7 +29,7 @@ const Hero = () => {
         <h1
           className={twMerge(
             'h1',
-            'from-primary-dark to-dark/70 bg-gradient-to-r bg-clip-text text-transparent md:leading-[4rem]'
+            'bg-gradient-to-r from-primary-dark to-dark/70 bg-clip-text text-transparent md:leading-[4rem]'
           )}
         >
           Find, book, rent a car - quick and super easy!
@@ -37,7 +37,7 @@ const Hero = () => {
         <h2
           className={twMerge(
             'h2',
-            'from-primary-dark to-dark/70 bg-gradient-to-r bg-clip-text text-transparent opacity-70 md:leading-10'
+            'bg-gradient-to-r from-primary-dark to-dark/70 bg-clip-text text-transparent opacity-70 md:leading-10'
           )}
         >
           Streamline your car rental experience with our effortless booking
@@ -45,10 +45,11 @@ const Hero = () => {
         </h2>
 
         <CustomButton
-          content='Explore cars'
           className='btn-small sm:btn-large btn-gradient my-4 gap-4'
           handleClick={scrollToTop}
-        />
+        >
+          Explore cars
+        </CustomButton>
       </div>
       {/* HERO BG-IMG CONTAINER */}
       <div className='hero-bg'></div>
@@ -56,8 +57,8 @@ const Hero = () => {
       <div className='relative flex flex-1 items-center bg-[url("/hero-bg.png")] bg-cover bg-center bg-no-repeat p-4 md:bg-none md:p-0'>
         <MotionImage
           initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: [0.5, 1.25, 1] }}
-          transition={{ delay: 0.1, duration: 0.5 }}
+          animate={{ opacity: 1, scale: [0, 1.25, 1] }}
+          transition={{ duration: 0.75 }}
           src='/hero.png'
           width={480}
           height={480}

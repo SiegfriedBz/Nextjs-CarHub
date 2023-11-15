@@ -15,10 +15,11 @@ const GoogleSignIn = () => {
           <span>Hello {session?.user?.name?.split(' ')?.[0]}</span>
           <CustomButton
             handleClick={() => signOut()}
-            content='SignOut'
             className='btn btn-small btn-outline'
             disabled={isLoading}
-          />
+          >
+            SignOut
+          </CustomButton>
         </div>
       ) : (
         <CustomButton
@@ -27,10 +28,11 @@ const GoogleSignIn = () => {
               callbackUrl: process.env.NEXT_PUBLIC_NEXTAUTH_URL,
             })
           }
-          content='SignIn'
           className='btn btn-small btn-outline'
           disabled={isLoading}
-        />
+        >
+          SignIn
+        </CustomButton>
       )}
     </>
   )

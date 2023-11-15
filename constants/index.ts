@@ -1,9 +1,6 @@
 import { CarType } from '@/types'
 
 export const makes: CarType['make'][] = [
-  'Acura',
-  'Alfa Romeo',
-  'Aston Martin',
   'Audi',
   'Bentley',
   'BMW',

@@ -2,29 +2,33 @@ import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import type { CarType } from '@/types'
 
-type StateType = {
-  cars: CarType[]
+type FavoriteCarStateType = {
   favoriteCars: CarType[]
 }
 
-type ActionsType = {
-  setCars: (cars: CarType[]) => void
+type FavoriteCarActionsType = {
   addToFavoriteCars: (car: CarType) => void
-  removeFromFavoriteCars: (carId: string) => void
+  removeFromFavoriteCars: (carModel: string, carTransmission: string) => void
   clearFavoriteCars: () => void
 }
 
-type useCarStoreType = StateType & ActionsType
+type useFavoriteCarStoreType = FavoriteCarStateType & FavoriteCarActionsType
 
-export const useCarStore = create<useCarStoreType>((set) => ({
-  cars: [],
-  favoriteCars: [],
-  setCars: (cars) => set({ cars }),
-  addToFavoriteCars: (car) =>
-    set((state) => ({ favoriteCars: [...state.favoriteCars, car] })),
-  removeFromFavoriteCars: (carId) =>
-    set((state) => ({
-      favoriteCars: state.favoriteCars.filter((car) => car.id !== carId),
-    })),
-  clearFavoriteCars: () => set({ favoriteCars: [] }),
-}))
+export const useFavoriteCarStore = create(
+  persist<useFavoriteCarStoreType>(
+    (set) => ({
+      favoriteCars: [],
+      addToFavoriteCars: (car) =>
+        set((state) => ({ favoriteCars: [...state.favoriteCars, car] })),
+      removeFromFavoriteCars: (carModel, carTransmission) =>
+        set((state) => ({
+          favoriteCars: state.favoriteCars.filter(
+            (car) =>
+              car.model !== carModel || car.transmission !== carTransmission
+          ),
+        })),
+      clearFavoriteCars: () => set({ favoriteCars: [] }),
+    }),
+    { name: 'car-hub-favorites', skipHydration: true }
+  )
+)

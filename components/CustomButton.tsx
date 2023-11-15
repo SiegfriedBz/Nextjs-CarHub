@@ -1,40 +1,34 @@
 'use client'
 
-import Image from 'next/image'
 import { twMerge } from 'tailwind-merge'
-import type { CustomButtonProps } from '@/types'
+
+type CustomButtonProps = {
+  btnType?: 'button' | 'submit' | 'reset'
+  className?: string
+  disabled?: boolean
+  handleClick?: () => void
+  children?: React.ReactNode
+}
 
 const CustomButton = ({
   btnType = 'button',
-  content,
   className = '',
-  src,
-  alt = '',
   disabled = false,
   handleClick,
+  children,
 }: CustomButtonProps) => {
   return (
     <button
       type={btnType}
       onClick={handleClick}
       className={twMerge(
-        'btn flex max-w-max items-center justify-between',
+        `btn flex items-center justify-center`,
         `${className} ${
           disabled ? 'cursor-not-allowed opacity-50 hover:scale-100' : ''
         }`
       )}
     >
-      <span>{content}</span>
-
-      {src && (
-        <Image
-          src={src}
-          width={32}
-          height={32}
-          className='h-full w-full object-cover'
-          alt={alt}
-        />
-      )}
+      <span>{children}</span>
     </button>
   )
 }

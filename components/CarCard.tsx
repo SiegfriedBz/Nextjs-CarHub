@@ -7,6 +7,7 @@ import Modal from './Modal'
 import CarCardDetails from './CarCardDetails'
 import ButtonToggleFavorite from './ButtonToggleFavorite'
 import type { CarType } from '@/types'
+import { generateCarImageUrl } from '@/utils/fetchCars'
 
 type Props = {
   car: CarType
@@ -47,7 +48,12 @@ const CarCard = ({ car }: Props) => {
 
         {/* img */}
         <div className='relative h-64 w-64'>
-          <Image src='/hero.png' alt='car' fill className='object-contain' />
+          <Image
+            src={generateCarImageUrl({ car })}
+            alt='car'
+            fill
+            className='object-contain'
+          />
         </div>
 
         {/* logos */}

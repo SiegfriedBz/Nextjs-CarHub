@@ -11,7 +11,7 @@ const Navbar = () => {
         <h2
           className={twMerge(
             'h2',
-            'from-primary-dark to-primary-light hidden bg-gradient-to-r bg-clip-text text-4xl italic text-transparent sm:block'
+            ' text-gradient hidden text-4xl italic sm:block'
           )}
         >
           CarHub

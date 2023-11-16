@@ -54,7 +54,7 @@ body {
 }
 
 @layer components {
-  a.underline-gradient-link {
+  .underline-gradient-link {
     @apply relative
       transition-all
       duration-300
@@ -111,5 +111,9 @@ body {
 
   .btn-gradient {
     @apply bg-gradient-to-r from-primary to-primary-light font-bold text-light;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-dark to-primary-light bg-clip-text font-bold text-transparent;
   }
 }

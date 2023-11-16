@@ -1,3 +1,5 @@
+import { CarType } from '@/types'
+
 type FiltersType = {
   make?: string
   model?: string
@@ -6,7 +8,7 @@ type FiltersType = {
   limit?: number
 }
 
-export const getCarsData = async (filters: FiltersType) => {
+export const fetchCars = async (filters: FiltersType) => {
   const { make, model, fuel_type, year, limit } = filters
 
   const newSearchParams = new URLSearchParams()
@@ -46,7 +48,6 @@ export const getCarsData = async (filters: FiltersType) => {
     if (!response.ok) throw new Error('Error fetching cars')
 
     const cars = await response.json()
-
     return cars
   } catch (error) {
     console.error(error)

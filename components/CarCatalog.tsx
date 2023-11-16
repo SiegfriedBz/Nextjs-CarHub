@@ -1,6 +1,8 @@
-import CarCard from './CarCard'
-import SearchBar from './SearchBar'
+import CarList from './CarList'
+import { years, fuels } from '@/constants'
 import type { CarType } from '@/types'
+import SearchBar from './searchBar/SearchBar'
+import FilterBox from './searchBar/FilterBox'
 
 type Props = {
   cars: CarType[]
@@ -11,13 +13,14 @@ const CarCatalog = ({ cars }: Props) => {
     <div className='relative'>
       {/* cars search */}
       <SearchBar />
+      {/* cars filter */}
+      <div className='flex gap-8'>
+        <FilterBox paramName='year' options={years} />
+        <FilterBox paramName='fuel_type' options={fuels} />
+      </div>
 
       {/* cars list */}
-      <div className='my-4 flex flex-wrap place-content-center gap-4'>
-        {cars?.map((car, index) => {
-          return <CarCard key={index} car={car} />
-        })}
-      </div>
+      <CarList cars={cars} />
     </div>
   )
 }

@@ -1,12 +1,6 @@
 import CarCatalog from '@/components/CarCatalog'
 import Hero from '@/components/Hero'
-import { getCarsData } from '@/utils/cars'
-
-// make
-// model
-// year
-// fuel_type
-// limit
+import { fetchCars } from '@/utils/fetchCars'
 
 type Props = {
   searchParams: {
@@ -17,14 +11,16 @@ type Props = {
     limit?: number
   }
 }
+
 export default async function Home({ searchParams }: Props) {
-  const cars = await getCarsData({
-    make: searchParams.make || 'Audi',
-    model: searchParams.model || '',
-    year: searchParams.year || 2021,
-    fuel_type: searchParams.fuel_type || '',
-    limit: searchParams.limit || 16,
-  })
+  const cars =
+    (await fetchCars({
+      make: searchParams.make || 'Audi',
+      model: searchParams.model || '',
+      year: searchParams.year || 2021,
+      fuel_type: searchParams.fuel_type || '',
+      limit: searchParams.limit || 16,
+    })) || []
 
   return (
     <main className='overflow-hidden'>
@@ -33,8 +29,10 @@ export default async function Home({ searchParams }: Props) {
       </section>
 
       <section>
-        <h2 className='my-4'>Car Catalog</h2>
-        <h3 className='italic opacity-70'>Explore cars you might like</h3>
+        <h2 className='text-gradient my-4'>Car Catalog</h2>
+        <h3 className='text-gradient italic opacity-70'>
+          Explore cars you might like
+        </h3>
         <CarCatalog cars={cars} />
       </section>
     </main>

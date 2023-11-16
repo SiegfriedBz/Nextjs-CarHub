@@ -16,7 +16,7 @@ const Footer = () => {
             <li>
               <Link
                 href='/company'
-                className='h5 underline-gradient-link from-primary-dark to-primary-light bg-gradient-to-r bg-clip-text text-transparent'
+                className='h5 underline-gradient-link bg-gradient-to-r from-primary-dark to-primary-light bg-clip-text text-transparent'
               >
                 Company
               </Link>
@@ -24,7 +24,7 @@ const Footer = () => {
             <li>
               <Link
                 href='/about'
-                className='h5 underline-gradient-link from-primary-dark to-primary-light bg-gradient-to-r bg-clip-text text-transparent'
+                className='h5 underline-gradient-link bg-gradient-to-r from-primary-dark to-primary-light bg-clip-text text-transparent'
               >
                 About
               </Link>
@@ -39,7 +39,7 @@ const Footer = () => {
           <span>&copy;{year} </span>
           <Link
             href='/'
-            className='from-primary-dark underline-gradient-link to-primary-light bg-gradient-to-r bg-clip-text italic text-transparent'
+            className='underline-gradient-link text-gradient italic'
           >
             CarHub
           </Link>
@@ -56,7 +56,7 @@ const Footer = () => {
             href='/'
             className={twMerge(
               'h5',
-              'from-primary-dark underline-gradient-link to-primary-light bg-gradient-to-r bg-clip-text text-lg italic text-transparent'
+              'underline-gradient-link text-gradient text-lg italic'
             )}
           >
             CarHub
@@ -68,18 +68,24 @@ const Footer = () => {
           <li className='text-center'>
             <Link
               href='/company'
-              className='underline-gradient-link h5 from-primary-dark to-primary-light bg-gradient-to-r bg-clip-text text-lg font-semibold text-transparent'
+              className='underline-gradient-link h5 bg-gradient-to-r from-primary-dark to-primary-light bg-clip-text text-lg font-semibold text-transparent'
             >
               Company
             </Link>
             <ul>
               <li>
-                <Link href='/company#tos' className='h6'>
+                <Link
+                  href='/company#tos'
+                  className='h6 underline-gradient-link'
+                >
                   Terms of Service
                 </Link>
               </li>
               <li>
-                <Link href='/company#privacy-policy' className='h6'>
+                <Link
+                  href='/company#privacy-policy'
+                  className='h6 underline-gradient-link'
+                >
                   Privacy Policy
                 </Link>
               </li>
@@ -88,18 +94,21 @@ const Footer = () => {
           <li className='text-center'>
             <Link
               href='/about'
-              className='underline-gradient-link h5 from-primary-dark to-primary-light bg-gradient-to-r bg-clip-text text-lg font-semibold text-transparent'
+              className='h5 underline-gradient-link text-gradient text-lg'
             >
               About
             </Link>
             <ul>
               <li>
-                <Link href='/about#how-it-works' className='h6'>
+                <Link
+                  href='/about#how-it-works'
+                  className='h6 underline-gradient-link'
+                >
                   How it works
                 </Link>
               </li>
               <li>
-                <Link href='/about' className='h6'>
+                <Link href='/about' className='h6 underline-gradient-link'>
                   Featured
                 </Link>
               </li>
@@ -108,18 +117,24 @@ const Footer = () => {
           <li className='hidden text-center lg:block'>
             <Link
               href='/company'
-              className='h5 underline-gradient-link from-primary-dark to-primary-light bg-gradient-to-r bg-clip-text text-lg font-semibold text-transparent'
+              className='h5 underline-gradient-link text-gradient text-lg'
             >
               Socials
             </Link>
             <ul>
               <li>
-                <Link href='/socials#events' className='h6'>
+                <Link
+                  href='/socials#events'
+                  className='h6 underline-gradient-link'
+                >
                   Events
                 </Link>
               </li>
               <li>
-                <Link href='/socials#invite-a-friend' className='h6'>
+                <Link
+                  href='/socials#invite-a-friend'
+                  className='h6 underline-gradient-link'
+                >
                   Invite a friend
                 </Link>
               </li>

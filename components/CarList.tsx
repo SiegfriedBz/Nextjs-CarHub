@@ -1,8 +1,9 @@
 'use client'
 
-import type { CarType } from '@/types'
-import CarCard from './CarCard'
 import { useRouter } from 'next/navigation'
+import CarCard from './CarCard'
+import ButtonShowMore from './ButtonShowMore'
+import type { CarType } from '@/types'
 
 type Props = {
   cars: CarType[]
@@ -17,11 +18,16 @@ const CarList = ({ cars }: Props) => {
   }
 
   return (
-    <div className='my-4 flex flex-wrap place-content-center gap-4'>
+    <div>
       {cars?.length > 0 ? (
-        cars.map((car, index) => {
-          return <CarCard key={index} car={car} />
-        })
+        <>
+          <div className='my-4 flex flex-wrap place-content-center gap-4'>
+            {cars.map((car, index) => {
+              return <CarCard key={index} car={car} />
+            })}
+          </div>
+          <ButtonShowMore />
+        </>
       ) : (
         <div className='mt-4 flex flex-col items-center'>
           <span>Oooops, no car was found..</span>

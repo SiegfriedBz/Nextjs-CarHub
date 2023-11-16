@@ -1,5 +1,5 @@
-import CarCatalog from '@/components/CarCatalog'
 import Hero from '@/components/Hero'
+import CarCatalog from '@/components/CarCatalog'
 import { fetchCars } from '@/utils/fetchCars'
 
 type Props = {
@@ -19,7 +19,7 @@ export default async function Home({ searchParams }: Props) {
       model: searchParams.model || '',
       year: searchParams.year || 2021,
       fuel_type: searchParams.fuel_type || '',
-      limit: searchParams.limit || 16,
+      limit: searchParams.limit || 4,
     })) || []
 
   return (

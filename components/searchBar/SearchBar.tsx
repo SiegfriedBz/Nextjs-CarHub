@@ -45,13 +45,13 @@ const SearchBar = () => {
   }
 
   return (
-    <div className='my-4 flex flex-col text-dark/60'>
+    <div className='my-4 flex w-full flex-col text-dark/60'>
       <form
         onSubmit={handleSearch}
-        className='flex w-full flex-row items-center rounded-lg bg-gray-100'
+        className='flex w-full items-center justify-between rounded-lg bg-gray-100'
       >
         {/* makes */}
-        <div className='flex-1 rounded-lg bg-gray-100 p-2 outline-none'>
+        <div className='search-make-combo-wrapper'>
           <SearchMakeCombo
             makes={makes}
             selectedMake={selectedMake}
@@ -60,18 +60,15 @@ const SearchBar = () => {
         </div>
 
         {/*  models */}
-        <div className='flex-1 bg-gray-100'>
-          <input
-            name='model'
-            id='model'
-            value={selectedModel}
-            placeholder='Model...'
-            onChange={(e) => setSelectedModel(e.target.value.trim())}
-            className='h-12 rounded-lg bg-light px-2 py-2 outline-none'
-          />
-        </div>
-
-        <div className='mx-2 flex items-center justify-between'>
+        <input
+          name='model'
+          id='model'
+          value={selectedModel}
+          placeholder='Model...'
+          onChange={(e) => setSelectedModel(e.target.value.trim())}
+          className='search-model-input'
+        />
+        <div className='mx-2 flex min-w-fit items-center justify-between'>
           {/* search btn */}
           <button type='submit' className='flex items-center justify-center'>
             <FontAwesomeIcon icon={faMagnifyingGlass} className='h-4 w-4' />

@@ -29,7 +29,7 @@ const SearchMakeCombo = ({ makes, selectedMake, setSelectedMake }: Props) => {
         <Combobox value={selectedMake} onChange={setSelectedMake}>
           <Combobox.Input
             onChange={(event) => setQuery(event.target.value)}
-            className='h-12 w-full cursor-pointer rounded-md bg-light p-4 outline-none'
+            className='h-12 w-full cursor-pointer rounded-md bg-white p-4 outline-none'
           />
           <Combobox.Options className='absolute z-50 mt-2 max-h-40 w-full overflow-y-auto rounded-md border border-gray-100 bg-white p-2 shadow-lg shadow-gray-100 outline-none'>
             {filteredMakes.map((make) => (

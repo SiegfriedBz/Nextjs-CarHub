@@ -53,3 +53,30 @@ export const fetchCars = async (filters: FiltersType) => {
     console.error(error)
   }
 }
+
+export function generateCarImageUrl({
+  car,
+  angle,
+}: {
+  car: CarType
+  angle?: string
+}) {
+  const { make, model, year } = car
+
+  const url = new URL(`https://cdn.imagin.studio/getimage`)
+  url.searchParams.append(
+    'customer',
+    process.env.NEXT_PUBLIC_IMAGIN_STUDIO_API_KEY as string
+  )
+
+  url.searchParams.append('make', make)
+  url.searchParams.append('modelFamily', model.split(' ')[0])
+  url.searchParams.append('zoomType', 'fullscreen')
+  url.searchParams.append('modelYear', year.toString())
+
+  if (angle) {
+    url.searchParams.append('angle', angle.toString())
+  }
+
+  return url.toString()
+}

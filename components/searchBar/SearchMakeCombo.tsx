@@ -1,7 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-import { Combobox } from '@headlessui/react'
+import { useState, Fragment } from 'react'
+import { Combobox, Transition } from '@headlessui/react'
 import type { CarType } from '@/types'
 
 type Props = {
@@ -31,17 +31,24 @@ const SearchMakeCombo = ({ makes, selectedMake, setSelectedMake }: Props) => {
             onChange={(event) => setQuery(event.target.value)}
             className='h-12 w-full cursor-pointer rounded-md bg-white p-4 outline-none'
           />
-          <Combobox.Options className='absolute z-50 mt-2 max-h-40 w-full overflow-y-auto rounded-md border border-gray-100 bg-white p-2 shadow-lg shadow-gray-100 outline-none'>
-            {filteredMakes.map((make) => (
-              <Combobox.Option
-                key={make}
-                value={make}
-                className='relative w-full cursor-pointer'
-              >
-                <span>{make}</span>
-              </Combobox.Option>
-            ))}
-          </Combobox.Options>
+          <Transition
+            as={Fragment}
+            leave='transition ease-in duration-100'
+            leaveFrom='opacity-100'
+            leaveTo='opacity-0'
+          >
+            <Combobox.Options className='absolute z-50 mt-2 max-h-40 w-full overflow-y-auto rounded-md border border-gray-100 bg-white p-2 shadow-lg shadow-gray-100 outline-none'>
+              {filteredMakes.map((make) => (
+                <Combobox.Option
+                  key={make}
+                  value={make}
+                  className='relative w-full cursor-pointer'
+                >
+                  <span>{make}</span>
+                </Combobox.Option>
+              ))}
+            </Combobox.Options>
+          </Transition>
         </Combobox>
       </div>
     </div>

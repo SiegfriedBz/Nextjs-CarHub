@@ -62,7 +62,7 @@ const ModalMenu = ({ children }: ModalMenuProps) => {
         dark:border-light dark:bg-gray-300/50
         dark:text-white dark:shadow-sm
         dark:shadow-light
-        sm:mx-12 md:mx-24 2xl:hidden'
+        sm:mx-12 md:mx-24 lg:mx-32 xl:mx-64'
       onClick={(e) => e.stopPropagation()}
     >
       {children}

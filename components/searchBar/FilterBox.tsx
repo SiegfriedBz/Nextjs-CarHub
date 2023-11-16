@@ -1,7 +1,8 @@
 'use client'
 
+import { Fragment } from 'react'
 import { useCallback, useEffect, useState } from 'react'
-import { Listbox } from '@headlessui/react'
+import { Listbox, Transition } from '@headlessui/react'
 import DoubleChevron from './DoubleChevron'
 import { useRouter } from 'next/navigation'
 
@@ -47,27 +48,34 @@ const FilterBox = ({ paramName, options }: Props) => {
             </div>
           </Listbox.Button>
 
-          <Listbox.Options>
-            <div className='absolute z-20 mt-2 flex w-[6.5rem] flex-col items-center rounded-md border-2 border-gray-100 bg-light px-2 shadow-md shadow-gray-100'>
-              {options.map((option, index) => (
-                <Listbox.Option
-                  key={`${option}-${index}`}
-                  value={option}
-                  className='bg-light'
-                >
-                  {({ active }) => (
-                    <span
-                      className={`inline-block w-[6.5rem] px-2 ${
-                        active ? 'bg-primary-light text-light' : 'bg-light'
-                      }`}
-                    >
-                      {option.title}
-                    </span>
-                  )}
-                </Listbox.Option>
-              ))}
-            </div>
-          </Listbox.Options>
+          <Transition
+            as={Fragment}
+            leave='transition ease-in duration-100'
+            leaveFrom='opacity-100'
+            leaveTo='opacity-0'
+          >
+            <Listbox.Options>
+              <div className='absolute z-20 mt-2 flex w-[6.5rem] flex-col items-center rounded-md border-2 border-gray-100 bg-light px-2 shadow-md shadow-gray-100'>
+                {options.map((option, index) => (
+                  <Listbox.Option
+                    key={`${option}-${index}`}
+                    value={option}
+                    className='bg-light'
+                  >
+                    {({ active }) => (
+                      <span
+                        className={`inline-block w-[6.5rem] px-2 ${
+                          active ? 'bg-primary-light text-light' : 'bg-light'
+                        }`}
+                      >
+                        {option.title}
+                      </span>
+                    )}
+                  </Listbox.Option>
+                ))}
+              </div>
+            </Listbox.Options>
+          </Transition>
         </div>
       </Listbox>
     </div>

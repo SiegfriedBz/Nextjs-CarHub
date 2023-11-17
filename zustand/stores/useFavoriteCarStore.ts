@@ -2,6 +2,7 @@ import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import type { CarType } from '@/types'
 
+/** FAVORITE CARS */
 type FavoriteCarStateType = {
   favoriteCars: CarType[]
 }
@@ -14,7 +15,7 @@ type FavoriteCarActionsType = {
 
 type useFavoriteCarStoreType = FavoriteCarStateType & FavoriteCarActionsType
 
-export const useFavoriteCarStore = create(
+const useFavoriteCarStore = create(
   persist<useFavoriteCarStoreType>(
     (set) => ({
       favoriteCars: [],
@@ -32,3 +33,5 @@ export const useFavoriteCarStore = create(
     { name: 'car-hub-favorites', skipHydration: true }
   )
 )
+
+export default useFavoriteCarStore

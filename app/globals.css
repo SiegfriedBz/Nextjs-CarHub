@@ -46,14 +46,49 @@ body {
   section {
     @apply p-4 lg:px-16 xl:px-32 2xl:px-48;
   }
-  section {
-    .section-top {
-      @apply mt-[var(--navbar-height)] min-h-[calc(100dvh-var(--navbar-height))] p-4 lg:px-16 xl:px-32 2xl:px-48;
-    }
+  section.section-top {
+    @apply mt-[var(--navbar-height)] min-h-[calc(100dvh-var(--navbar-height))];
   }
 }
 
 @layer components {
+  #header {
+    @apply fixed left-0 right-0 top-0 z-[1000] flex h-[var(--navbar-height)]
+      w-full items-center justify-between border-b border-primary-dark bg-light p-4 lg:px-16 xl:px-32 2xl:px-48;
+  }
+
+  #footer {
+    @apply flex 
+      h-[calc(var(--navbar-height)*2/3)] items-center justify-between border-t border-primary-dark bg-light p-4 md:h-[var(--navbar-height)] lg:px-16 xl:px-32 2xl:px-48;
+  }
+
+  /** hero */
+  .hero-bg {
+    @apply md:absolute md:bottom-[6rem] md:left-1/2 md:top-1/2 md:block md:h-1/2 md:w-[44%] md:-translate-y-1/2 md:bg-[url('/hero-bg.png')] md:bg-cover md:bg-center md:bg-no-repeat;
+  }
+
+  /** button */
+  .btn {
+    @apply transition duration-300 ease-in-out;
+  }
+
+  .btn-large {
+    @apply rounded-lg px-8 py-4 text-lg uppercase tracking-wide hover:scale-110;
+  }
+
+  .btn-small {
+    @apply rounded-md px-4 py-2 text-sm hover:scale-105;
+  }
+
+  .btn-outline {
+    @apply border-2 border-gray-300 text-dark/50 transition duration-500 ease-in-out hover:scale-100 hover:bg-gradient-to-r hover:from-primary-dark hover:to-dark/80 hover:text-light;
+  }
+
+  .btn-gradient {
+    @apply bg-gradient-to-r from-primary to-primary-light font-bold text-light;
+  }
+
+  /** link */
   .underline-gradient-link {
     @apply relative
       transition-all
@@ -79,44 +114,13 @@ body {
       active:after:w-full
       active:after:bg-primary/75;
   }
-  #header {
-    @apply fixed left-0 right-0 top-0 z-[1000] flex h-[var(--navbar-height)]
-      w-full items-center justify-between border-b border-primary-dark bg-light p-4 lg:px-16 xl:px-32 2xl:px-48;
-  }
 
-  #footer {
-    @apply flex 
-      h-[calc(var(--navbar-height)*2/3)] items-center justify-between border-t border-primary-dark bg-light p-4 md:h-[var(--navbar-height)] lg:px-16 xl:px-32 2xl:px-48;
-  }
-
-  .hero-bg {
-    @apply md:absolute md:bottom-[6rem] md:left-1/2 md:top-1/2 md:block md:h-1/2 md:w-[44%] md:-translate-y-1/2 md:bg-[url('/hero-bg.png')] md:bg-cover md:bg-center md:bg-no-repeat;
-  }
-
-  .btn {
-    @apply transition duration-300 ease-in-out;
-  }
-
-  .btn-large {
-    @apply rounded-lg px-8 py-4 text-lg uppercase tracking-wide hover:scale-110;
-  }
-
-  .btn-small {
-    @apply rounded-md px-4 py-2 text-sm hover:scale-105;
-  }
-
-  .btn-outline {
-    @apply border-2 border-gray-300 text-dark/50 transition duration-500 ease-in-out hover:scale-100 hover:bg-gradient-to-r hover:from-primary-dark hover:to-dark/80 hover:text-light;
-  }
-
-  .btn-gradient {
-    @apply bg-gradient-to-r from-primary to-primary-light font-bold text-light;
-  }
-
+  /** text */
   .text-gradient {
     @apply bg-gradient-to-r from-primary-dark to-primary-light bg-clip-text font-bold text-transparent;
   }
 
+  /** SearchBar */
   .search-make-combo-wrapper {
     min-width: 8rem;
     @apply rounded-lg bg-gray-100 p-2 outline-none sm:w-[50vw];
@@ -126,5 +130,10 @@ body {
     min-width: 8rem;
     max-width: 100%;
     @apply h-12 rounded-lg bg-white p-2 outline-none sm:w-[25vw];
+  }
+
+  /** MobileMenu */
+  .mobile-menu {
+    @apply absolute bottom-0 left-0 right-0 top-[var(--navbar-height)] z-[1000] flex h-[calc(100vh-var(--navbar-height))] flex-col items-center justify-center bg-gradient-to-r from-primary to-primary-light;
   }
 }

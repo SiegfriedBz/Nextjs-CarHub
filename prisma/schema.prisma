@@ -18,6 +18,28 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  isAdmin       Boolean   @default(false)
+  bookings      Booking[]
+}
+
+model Booking {
+  id       String   @id @default(cuid())
+  checkin  DateTime
+  checkout DateTime
+  status   String   @default("pending")
+
+  car_make                   String
+  car_model                  String
+  car_year                   String
+  car_transmission           String
+  car_fuel_type              String
+  car_price_per_day_in_cents Int     @default(5200)
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Account {

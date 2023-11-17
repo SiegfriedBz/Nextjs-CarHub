@@ -9,6 +9,7 @@
     "lint": "next lint",
     "prisma:generate": "npx dotenv -e .env.local -- prisma generate",
     "migrate:dev": "npx dotenv -e .env.local -- prisma migrate dev",
+    "prisma:format": "npx dotenv -e .env.local -- prisma format",
     "prisma:studio": "npx dotenv -e .env.local -- prisma studio",
     "db:push": "npx dotenv -e .env.local -- prisma db push",
     "migrate:reset": "npx dotenv -e .env.local -- prisma migrate reset",
@@ -29,6 +30,7 @@
     "next-auth": "^4.24.5",
     "react": "^18",
     "react-dom": "^18",
+    "react-toastify": "^9.1.3",
     "tailwind-merge": "^2.0.0",
     "zustand": "^4.4.6"
   },

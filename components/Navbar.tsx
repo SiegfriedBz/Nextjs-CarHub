@@ -2,6 +2,7 @@ import GoogleSignIn from './GoogleSignIn'
 import Link from 'next/link'
 import { twMerge } from 'tailwind-merge'
 import Logo from './Logo'
+import MobileMenu from './MobileMenu'
 
 const Navbar = () => {
   return (
@@ -20,6 +21,9 @@ const Navbar = () => {
 
       {/* AUTH */}
       <GoogleSignIn />
+
+      {/* mobile menu */}
+      <MobileMenu />
     </header>
   )
 }

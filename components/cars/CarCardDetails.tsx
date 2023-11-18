@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useFavoriteCarStore } from '@/zustand/stores'
-import ButtonToggleFavorite from './ButtonToggleFavorite'
+import ButtonToggleFavorite from '@/components/buttons/ButtonToggleFavorite'
 import { generateCarImageUrl } from '@/utils/fetchCars'
 import type { CarType } from '@/types'
 

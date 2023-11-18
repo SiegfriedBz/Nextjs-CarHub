@@ -1,15 +1,10 @@
 'use client'
 
 import { useState } from 'react'
-import {
-  PaymentElement,
-  useStripe,
-  useElements,
-  AddressElement,
-} from '@stripe/react-stripe-js'
+import { PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import { twMerge } from 'tailwind-merge'
-import CustomButton from '@/components/CustomButton'
 import LoadingPulse from '@/components/LoadingPulse'
+import CustomButton from '@/components/buttons/CustomButton'
 
 type PaymentIntentType = {
   status: 'succeeded' | 'processing' | 'requires_payment_method'
@@ -100,7 +95,7 @@ export default function CheckoutForm({ bookingId }: Props) {
   }
 
   return (
-    <div className='flex h-full flex-col gap-y-4 rounded-md bg-light p-4 shadow-blue-200'>
+    <div className='flex flex-col gap-y-1 rounded-md bg-light p-4 shadow-blue-200'>
       {/* payment form */}
       <div className='rounded-md bg-light p-4 shadow-blue-200 ring ring-blue-100'>
         <form id='payment-form' onSubmit={handleSubmit}>
@@ -109,7 +104,10 @@ export default function CheckoutForm({ bookingId }: Props) {
           <CustomButton
             btnType='submit'
             disabled={isLoading || !stripe || !elements}
-            className={twMerge('btn', 'btn-medium btn-gradient mt-4 w-full')}
+            className={twMerge(
+              'btn',
+              'btn-medium md:btn-large btn-gradient mt-4 w-full sm:w-1/3'
+            )}
           >
             {isLoading ? <LoadingPulse /> : <span>Pay now</span>}
           </CustomButton>
@@ -120,20 +118,20 @@ export default function CheckoutForm({ bookingId }: Props) {
       </div>
 
       {/* fake card details */}
-      <div className='mt-4 rounded-md bg-light p-4 shadow-blue-200 ring ring-blue-100'>
-        <h4 className='mt-2 text-lg italic'>Test card details</h4>
+      <div className='mt-4 rounded-md bg-light p-4 italic shadow-blue-200 ring ring-blue-100'>
+        <h4 className='text-lg'>Test card details</h4>
         <ul>
           <li>
-            <span className='text-primary-dark'>Card number </span>
-            4242 4242 4242 4242
+            <span className='text-primary-dark'>Card number: </span>
+            <span className='text-gray-500'>4242 4242 4242 4242</span>
           </li>
           <li>
-            <span className='text-primary-dark'>Expiry </span>
-            04/25
+            <span className='text-primary-dark'>Expiry: </span>
+            <span className='text-gray-500'>04/25</span>
           </li>
           <li>
-            <span className='text-primary-dark'>CVC </span>
-            424
+            <span className='text-primary-dark'>CVC: </span>
+            <span className='text-gray-500'>424</span>
           </li>
         </ul>
       </div>

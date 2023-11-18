@@ -1,8 +1,8 @@
 import CarList from './CarList'
+import SearchBar from '@/components/searchBar/SearchBar'
+import FilterBox from '@/components/searchBar/FilterBox'
 import { years, fuels } from '@/constants'
 import type { CarType } from '@/types'
-import SearchBar from './searchBar/SearchBar'
-import FilterBox from './searchBar/FilterBox'
 
 type Props = {
   cars: CarType[]

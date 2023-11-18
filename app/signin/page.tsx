@@ -1,15 +1,11 @@
 'use client'
 
-import { signIn, useSession } from 'next-auth/react'
+import { signIn } from 'next-auth/react'
 import Image from 'next/image'
 import { twMerge } from 'tailwind-merge'
-import CustomButton from '@/components/CustomButton'
+import CustomButton from '@/components/buttons/CustomButton'
 
 const SignInPage = () => {
-  const { data: session, status } = useSession()
-  const isLoading = status === 'loading'
-  const isAuthenticated = status === 'authenticated'
-
   return (
     <section className='section-top flex w-full flex-col items-center justify-center gap-4 md:flex-row md:gap-16'>
       {/* IMG */}
@@ -19,8 +15,8 @@ const SignInPage = () => {
 
       {/* CTA */}
       <div className='flex w-full flex-col items-start gap-y-4 md:w-1/3'>
-        <h2 className='font-semibold text-dark/80'>Welcome</h2>
-        <h4 className='text-dark/80'>
+        <h2 className='font-semibold text-gray-500'>Welcome</h2>
+        <h4 className='text-gray-500'>
           Log into your account or create a new one using your Google account.
         </h4>
         <CustomButton
@@ -36,7 +32,7 @@ const SignInPage = () => {
           </div>
         </CustomButton>
 
-        <h4 className='mt-4 text-dark/80 md:mt-16'>
+        <h4 className='mt-4 text-gray-500 md:mt-16'>
           Have a problem?{' '}
           <a
             href={`mailto:${process.env.NEXT_PUBLIC_MAIL_CONTACT}`}

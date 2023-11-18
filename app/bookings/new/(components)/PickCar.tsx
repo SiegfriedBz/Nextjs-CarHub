@@ -1,14 +1,13 @@
 'use client'
 
 import Link from 'next/link'
-import { useFavoriteCarStore } from '@/zustand/stores'
-
 import Image from 'next/image'
+import { useFavoriteCarStore } from '@/zustand/stores'
 import { generateCarImageUrl } from '@/utils/fetchCars'
 import { useEffect, useState } from 'react'
 import Modal from '@/components/Modal'
-import CarCardDetails from '@/components/CarCardDetails'
-import CustomButton from '@/components/CustomButton'
+import CarCardDetails from '@/components/cars/CarCardDetails'
+import CustomButton from '@/components/buttons/CustomButton'
 import type { CarType } from '@/types'
 
 type Props = {
@@ -121,7 +120,7 @@ const PickCar = ({ selectedCar, setSelectedCar }: Props) => {
                 </div>
 
                 {/* buttons */}
-                <div className='flex gap-2 sm:flex-col-reverse md:flex-row'>
+                <div className='flex w-full justify-end gap-2 sm:flex-col-reverse sm:items-center sm:justify-center md:flex-row md:justify-end'>
                   {/* see car details btn */}
                   <CustomButton
                     handleClick={() => handleSelectCarForModal(favCar)}

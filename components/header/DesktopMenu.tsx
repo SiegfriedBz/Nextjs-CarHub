@@ -1,10 +1,9 @@
 import Link from 'next/link'
-import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
 const DESKTOP_MENU_LINKS = [
-  { id: 1, title: 'My Bookings', href: '/bookings', className: '' },
-  { id: 2, title: 'New Booking', href: '/bookings/new', className: '' },
+  { id: 1, title: 'New Booking', href: '/bookings/new', className: '' },
+  { id: 2, title: 'My Bookings', href: '/bookings', className: '' },
   { id: 3, title: 'Company', href: '/company', className: 'hidden xl:flex' },
   { id: 4, title: 'About', href: '/about', className: 'hidden xl:flex' },
   { id: 5, title: 'Socials', href: '/socials', className: 'hidden 2xl:flex' },

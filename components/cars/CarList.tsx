@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation'
 import CarCard from './CarCard'
-import ButtonShowMore from './ButtonShowMore'
+import ButtonShowMore from '@/components/buttons/ButtonShowMore'
 import type { CarType } from '@/types'
 
 type Props = {

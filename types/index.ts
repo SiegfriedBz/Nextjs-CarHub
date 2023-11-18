@@ -22,7 +22,7 @@ export type BookingType = {
   status: string
   car_make: string
   car_model: string
-  car_year: string
+  car_year: number
   car_transmission: string
   car_fuel_type: string
   total_price_in_cents: number

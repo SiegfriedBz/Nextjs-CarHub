@@ -2,13 +2,13 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
-import CustomButton from './CustomButton'
-import Modal from './Modal'
 import CarCardDetails from './CarCardDetails'
-import ButtonToggleFavorite from './ButtonToggleFavorite'
-import type { CarType } from '@/types'
+import Modal from '../Modal'
+import ButtonToggleFavorite from '@/components/buttons/ButtonToggleFavorite'
+import CustomButton from '@/components/buttons/CustomButton'
 import { generateCarImageUrl } from '@/utils/fetchCars'
 import { car_price_per_day_in_cents } from '@/constants'
+import type { CarType } from '@/types'
 
 type Props = {
   car: CarType

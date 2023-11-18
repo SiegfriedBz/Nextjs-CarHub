@@ -6,9 +6,8 @@ const Footer = () => {
   const year = new Date().getFullYear()
 
   return (
-    <footer id='footer'>
+    <footer id='footer' className='footer'>
       {/* MOBILE ONLY */}
-
       <div className='flex w-full flex-col items-center justify-between md:hidden'>
         <div className='flex w-full justify-between'>
           {/* links */}

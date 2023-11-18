@@ -8,6 +8,7 @@ import CarCardDetails from './CarCardDetails'
 import ButtonToggleFavorite from './ButtonToggleFavorite'
 import type { CarType } from '@/types'
 import { generateCarImageUrl } from '@/utils/fetchCars'
+import { car_price_per_day_in_cents } from '@/constants'
 
 type Props = {
   car: CarType
@@ -15,7 +16,7 @@ type Props = {
 
 const CarCard = ({ car }: Props) => {
   // props
-  const { make, model, transmission, drive, city_mpg } = car
+  const { make, model, transmission, drive, city_mpg, year } = car
   const transmissionDisplay = transmission === 'a' ? 'Automatic' : 'Manual'
 
   // state
@@ -43,13 +44,13 @@ const CarCard = ({ car }: Props) => {
       before:font-normal before:content-["\0024"] after:absolute after:-bottom-[0.15rem] after:-right-8 after:text-base after:font-normal after:content-["/day"]
       '
         >
-          42
+          {car_price_per_day_in_cents / 100}
         </h2>
 
         {/* img */}
         <div className='relative h-64 w-64'>
           <Image
-            src={generateCarImageUrl({ car })}
+            src={generateCarImageUrl({ carData: { make, model, year } })}
             alt='car'
             fill
             className='object-contain'
@@ -77,7 +78,8 @@ const CarCard = ({ car }: Props) => {
               <p className='text-sm uppercase'>{city_mpg} MPG</p>
             </div>
           </div>
-          {/* Book Btn */}
+
+          {/* view more btn */}
           <CustomButton
             handleClick={() => setModalIsOpen(true)}
             className='btn-small btn-gradient invisible absolute -bottom-9 left-0 right-0 transition duration-200 ease-in-out group-hover:visible'

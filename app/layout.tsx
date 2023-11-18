@@ -3,11 +3,12 @@ import type { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
 import './globals.css'
 import SessionProvider from '@/context/SessionProvider'
-import Navbar from '@/components/Navbar'
+
 import Footer from '@/components/Footer'
 import { authOptions } from '@/utils/authOptions'
-import { ToastContainer, toast } from 'react-toastify'
+import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import Navbar from '@/components/header/Navbar'
 
 const roboto = Roboto({
   weight: ['100', '300', '400', '700'],
@@ -35,8 +36,8 @@ export default async function RootLayout({
           <Navbar />
           {children}
           <Footer />
-          <ToastContainer />
         </SessionProvider>
+        <ToastContainer position='bottom-right' />
       </body>
     </html>
   )

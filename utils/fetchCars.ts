@@ -1,5 +1,6 @@
 import { CarType } from '@/types'
 
+// cars
 type FiltersType = {
   make?: string
   model?: string
@@ -54,14 +55,23 @@ export const fetchCars = async (filters: FiltersType) => {
   }
 }
 
+// Car images
+type CarData = {
+  make: string
+  model: string
+  year: number
+}
+
 export function generateCarImageUrl({
-  car,
+  carData,
   angle,
 }: {
-  car: CarType
+  carData: CarData
   angle?: string
 }) {
-  const { make, model, year } = car
+  console.log(carData)
+
+  const { make, model, year } = carData
 
   const url = new URL(`https://cdn.imagin.studio/getimage`)
   url.searchParams.append(

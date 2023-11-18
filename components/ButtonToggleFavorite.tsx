@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { useFavoriteCarStore } from '@/zustand/store'
+import { useFavoriteCarStore } from '@/zustand/stores'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faThumbsUp } from '@fortawesome/free-solid-svg-icons'
 import type { CarType } from '@/types'

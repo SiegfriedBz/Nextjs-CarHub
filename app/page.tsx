@@ -1,6 +1,8 @@
 import Hero from '@/components/Hero'
 import CarCatalog from '@/components/CarCatalog'
 import { fetchCars } from '@/utils/fetchCars'
+import { getServerSession } from 'next-auth'
+import { authOptions } from '@/utils/authOptions'
 
 type Props = {
   searchParams: {
@@ -12,23 +14,36 @@ type Props = {
   }
 }
 
-export default async function Home({ searchParams }: Props) {
-  const cars =
-    (await fetchCars({
+async function getData({ searchParams }: Props) {
+  try {
+    // fetch cars
+    const cars = await fetchCars({
       make: searchParams.make || 'Audi',
       model: searchParams.model || '',
       year: searchParams.year || 2021,
       fuel_type: searchParams.fuel_type || '',
       limit: searchParams.limit || 4,
-    })) || []
+    })
+
+    return cars || []
+  } catch (error) {
+    console.log(error)
+    return []
+  }
+}
+
+export default async function Home({ searchParams }: Props) {
+  const cars = await getData({ searchParams })
+  const session = await getServerSession(authOptions)
+  console.log(session)
 
   return (
     <main className='overflow-hidden'>
-      <section>
+      <section className='section-top flex flex-col justify-center'>
         <Hero />
       </section>
 
-      <section>
+      <section id='catalog' className='scroll-mt-24'>
         <h2 className='text-gradient my-4'>Car Catalog</h2>
         <h3 className='text-gradient italic opacity-70'>
           Explore cars you might like

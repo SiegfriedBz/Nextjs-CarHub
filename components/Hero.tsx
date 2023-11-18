@@ -1,28 +1,25 @@
 'use client'
 
-import { useRef } from 'react'
 import Image from 'next/image'
 import { twMerge } from 'tailwind-merge'
 import CustomButton from './CustomButton'
 import { motion } from 'framer-motion'
+import { useRouter } from 'next/navigation'
 
 const MotionImage = motion(Image)
 
 const Hero = () => {
-  const topHeroRef = useRef<HTMLDivElement>(null)
+  const router = useRouter()
 
-  const scrollToTop = () => {
-    if (topHeroRef.current != null) {
-      topHeroRef.current.scrollIntoView({ behavior: 'smooth' })
-    }
+  const scrollToCatalog = () => {
+    router.push('/#catalog', { scroll: true })
   }
 
   return (
     <div
       id='hero'
-      ref={topHeroRef}
       // navbar-height 6rem
-      className='section-top flex scroll-mt-[6rem] flex-col items-center justify-center md:flex-row md:gap-4'
+      className='flex scroll-mt-[6rem] flex-col items-center justify-center gap-4 md:flex-row md:gap-0'
     >
       {/* HERO TEXT CONTAINER */}
       <div className='md:w-1/2'>
@@ -45,8 +42,8 @@ const Hero = () => {
         </h2>
 
         <CustomButton
-          className='btn-small sm:btn-large btn-gradient my-4 gap-4'
-          handleClick={scrollToTop}
+          className='btn-medium sm:btn-large btn-gradient my-4 gap-4'
+          handleClick={() => scrollToCatalog()}
         >
           Explore cars
         </CustomButton>

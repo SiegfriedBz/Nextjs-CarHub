@@ -13,7 +13,7 @@ datasource db {
 model User {
   id            String    @id @default(cuid())
   name          String?
-  email         String?   @unique
+  email         String   @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
@@ -23,17 +23,18 @@ model User {
 }
 
 model Booking {
-  id       String   @id @default(cuid())
-  checkin  DateTime
-  checkout DateTime
-  status   String   @default("pending")
+  id        String   @id @default(cuid())
+  intent_id String? // Stripe intent id
+  checkin   DateTime
+  checkout  DateTime
+  status    String   @default("pending")
 
-  car_make                   String
-  car_model                  String
-  car_year                   String
-  car_transmission           String
-  car_fuel_type              String
-  car_price_per_day_in_cents Int     @default(5200)
+  car_make             String
+  car_model            String
+  car_year             Int
+  car_transmission     String
+  car_fuel_type        String
+  total_price_in_cents Int
 
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String

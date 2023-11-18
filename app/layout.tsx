@@ -1,5 +1,6 @@
 import { getServerSession } from 'next-auth'
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import { Roboto } from 'next/font/google'
 import './globals.css'
 import { authOptions } from '@/utils/authOptions'
@@ -37,6 +38,18 @@ export default async function RootLayout({
           <Footer />
         </SessionProvider>
         <ToastContainer position='bottom-right' />
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=G-5D8965JFGP`}
+        />
+        <Script id='google-analytics'>
+          {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+ 
+          gtag('config', 'G-5D8965JFGP');
+        `}
+        </Script>
       </body>
     </html>
   )

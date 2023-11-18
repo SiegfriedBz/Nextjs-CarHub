@@ -12,7 +12,7 @@ const Hero = () => {
   const router = useRouter()
 
   const scrollToCatalog = () => {
-    router.push('/#car-catalog')
+    router.push('/#catalog', { scroll: true })
   }
 
   return (
@@ -42,7 +42,7 @@ const Hero = () => {
         </h2>
 
         <CustomButton
-          className='btn-small sm:btn-large btn-gradient my-4 gap-4'
+          className='btn-medium sm:btn-large btn-gradient my-4 gap-4'
           handleClick={() => scrollToCatalog()}
         >
           Explore cars

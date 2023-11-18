@@ -66,7 +66,7 @@ const StripeSuccessPage = ({ params }: Props) => {
     updateBooking()
   }, [updateBooking])
 
-  if (isLoading) return <LoadingPulse />
+  if (!session || isLoading) return <LoadingPulse />
   if (!isAuthenticated) return router.push('/signin')
 
   return (

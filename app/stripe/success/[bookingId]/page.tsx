@@ -1,13 +1,12 @@
 'use client'
 
 import React, { useCallback, useEffect, useState } from 'react'
-import Link from 'next/link'
-import { useSearchParams } from 'next/navigation'
+import { useSearchParams, useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
-import { twMerge } from 'tailwind-merge'
+import Link from 'next/link'
 import { toast } from 'react-toastify'
 import LoadingPulse from '@/components/LoadingPulse'
-import { formatDate } from '@/utils/formatDate'
+import BookingDetails from '@/components/BookingDetails'
 import type { BookingType } from '@/types'
 
 type Props = {
@@ -25,7 +24,11 @@ const StripeSuccessPage = ({ params }: Props) => {
 
   // session
   const { data: session, status } = useSession()
-  const userEmail = session?.user?.email
+  const isLoading = status === 'loading'
+  const isAuthenticated = status === 'authenticated'
+
+  // router
+  const router = useRouter()
 
   // state
   const [confirmedBooking, setConfirmedBooking] = useState<BookingType | null>(
@@ -63,66 +66,27 @@ const StripeSuccessPage = ({ params }: Props) => {
     updateBooking()
   }, [updateBooking])
 
+  if (!session || isLoading) return <LoadingPulse />
+  if (!isAuthenticated) return router.push('/signin')
+
   return (
     <section className='section-top'>
       <h1>Thank you for your booking!</h1>
-      <h2>Booking details</h2>
+      <h2 className='font-semibold'>Booking details</h2>
 
-      <div className='mb-2'>
+      <div className='flex flex-col'>
         {confirmedBooking == null ? (
           <LoadingPulse />
         ) : (
-          <div>
-            {/* order summary */}
-            <div className='flex items-center gap-x-4'>
-              <h3>Order Id: </h3>
-              <span className='text-dark/80'>{confirmedBooking.id}</span>
-            </div>
-            <div className='flex items-center gap-x-4'>
-              <h3>Your email: </h3>
-              <span className='text-dark/80'>{userEmail}</span>
-            </div>
-            <div className='flex items-center gap-x-4'>
-              <h3>Booking Status: </h3>
-              <span className='capitalize text-dark/80'>
-                {confirmedBooking.status.toLowerCase()}
-              </span>
-            </div>
-            <div className='flex items-center gap-x-4'>
-              <h3>Order Total: </h3>
-              <span className='text-dark/80'>
-                ${confirmedBooking.total_price_in_cents / 100}
-              </span>
-            </div>
-
-            {/* car */}
-            <div className='my-2'>
-              <div className='flex items-center gap-x-4'>
-                <h3>Car: </h3>
-                <span className='uppercase tracking-wide text-dark/80'>
-                  {confirmedBooking.car_make} {confirmedBooking.car_model}
-                </span>
-              </div>
-              <div className='flex items-center gap-x-4'>
-                <h3>Dates: </h3>
-                <span className='text-dark/80'>
-                  From {formatDate(new Date(confirmedBooking.checkin))} to{' '}
-                  {formatDate(new Date(confirmedBooking.checkout))}
-                </span>
-              </div>
-            </div>
-
-            {/* link to orders */}
-            <div className='mt-2 flex justify-end'>
-              <Link
-                replace
-                href='/bookings'
-                className={twMerge('btn', 'btn-medium btn-gradient')}
-              >
-                Check your bookings
-              </Link>
-            </div>
-          </div>
+          <>
+            <BookingDetails session={session} booking={confirmedBooking} />
+            <Link
+              href='/bookings'
+              className='btn-small md:btn-medium btn-gradient mt-2 w-fit self-end'
+            >
+              My Bookings
+            </Link>
+          </>
         )}
       </div>
     </section>

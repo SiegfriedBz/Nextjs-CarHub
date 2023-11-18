@@ -52,14 +52,12 @@ const CustomPaymentFlow = ({ bookingId }: Props) => {
   }
 
   return (
-    <div className='flex h-full flex-col justify-center p-4'>
-      <div className='App'>
-        {clientSecret && (
-          <Elements options={options} stripe={stripePromise}>
-            <CheckoutForm bookingId={bookingId} />
-          </Elements>
-        )}
-      </div>
+    <div className='App'>
+      {clientSecret && (
+        <Elements options={options} stripe={stripePromise}>
+          <CheckoutForm bookingId={bookingId} />
+        </Elements>
+      )}
     </div>
   )
 }

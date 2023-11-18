@@ -3,10 +3,10 @@
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { toast } from 'react-toastify'
-import CustomButton from '@/components/CustomButton'
+import CustomButton from '@/components/buttons/CustomButton'
 import { generateCarImageUrl } from '@/utils/fetchCars'
-import type { CarType } from '@/types'
 import { formatDate } from '@/utils/formatDate'
+import type { CarType } from '@/types'
 
 type Props = {
   selectedCar: CarType | undefined

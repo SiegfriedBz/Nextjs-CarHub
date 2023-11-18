@@ -1,7 +1,7 @@
 'use client'
 
 import { useMobileMenuStore } from '@/zustand/stores'
-import { useSession, signIn, signOut } from 'next-auth/react'
+import { useSession, signOut } from 'next-auth/react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { twMerge } from 'tailwind-merge'
@@ -10,8 +10,8 @@ import ButtonMobileBurger from './ButtonMobileBurger'
 const MOBILE_MENU_LINKS = (isSignedIn: boolean) => [
   { id: 1, title: 'Home', href: '/' },
   { id: 2, title: `${isSignedIn ? 'Sign out' : 'Sign in'}`, href: '/signin' },
-  { id: 3, title: 'My Bookings', href: '/bookings' },
-  { id: 4, title: 'New Booking', href: '/bookings/new' },
+  { id: 3, title: 'New Booking', href: '/bookings/new' },
+  { id: 4, title: 'My Bookings', href: '/bookings' },
   { id: 5, title: 'Company', href: '/company' },
   { id: 6, title: 'About', href: '/about' },
   { id: 7, title: 'Socials', href: '/socials' },
@@ -20,7 +20,6 @@ const MOBILE_MENU_LINKS = (isSignedIn: boolean) => [
 const MobileMenu = () => {
   // session
   const { data: session, status } = useSession()
-  const isLoading = status === 'loading'
   const isSignedIn = session?.user?.email != undefined
 
   // store

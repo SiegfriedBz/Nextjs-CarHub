@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Socials = () => {
-  return <section>Socials</section>
+  return <section className='section-top'>Socials</section>
 }
 
 export default Socials

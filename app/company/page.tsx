@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Company = () => {
-  return <section>Company</section>
+  return <section className='section-top'>Company</section>
 }
 
 export default Company

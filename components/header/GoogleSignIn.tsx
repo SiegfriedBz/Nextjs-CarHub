@@ -1,8 +1,8 @@
 'use client'
 
-import { useSession, signIn, signOut } from 'next-auth/react'
-import CustomButton from '../CustomButton'
 import Image from 'next/image'
+import { useSession, signIn, signOut } from 'next-auth/react'
+import CustomButton from '@/components/buttons/CustomButton'
 
 const GoogleSignIn = () => {
   const { data: session, status } = useSession()

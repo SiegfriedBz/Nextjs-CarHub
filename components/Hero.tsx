@@ -1,10 +1,10 @@
 'use client'
 
 import Image from 'next/image'
-import { twMerge } from 'tailwind-merge'
-import CustomButton from './CustomButton'
-import { motion } from 'framer-motion'
 import { useRouter } from 'next/navigation'
+import { motion } from 'framer-motion'
+import { twMerge } from 'tailwind-merge'
+import CustomButton from '@/components/buttons/CustomButton'
 
 const MotionImage = motion(Image)
 

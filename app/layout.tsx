@@ -2,13 +2,12 @@ import { getServerSession } from 'next-auth'
 import type { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
 import './globals.css'
-import SessionProvider from '@/context/SessionProvider'
-
-import Footer from '@/components/Footer'
 import { authOptions } from '@/utils/authOptions'
+import SessionProvider from '@/context/SessionProvider'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Navbar from '@/components/header/Navbar'
+import Footer from '@/components/footer/Footer'
 
 const roboto = Roboto({
   weight: ['100', '300', '400', '700'],

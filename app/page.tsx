@@ -1,8 +1,8 @@
-import Hero from '@/components/Hero'
-import CarCatalog from '@/components/CarCatalog'
-import { fetchCars } from '@/utils/fetchCars'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/utils/authOptions'
+import Hero from '@/components/Hero'
+import CarCatalog from '@/components/cars/CarCatalog'
+import { fetchCars } from '@/utils/fetchCars'
 
 type Props = {
   searchParams: {

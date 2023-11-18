@@ -1,7 +1,7 @@
 'use client'
 
-import { useMobileMenuStore } from '@/zustand/stores'
 import Image from 'next/image'
+import { useMobileMenuStore } from '@/zustand/stores'
 
 const Logo = () => {
   const { closeMobileMenu } = useMobileMenuStore()

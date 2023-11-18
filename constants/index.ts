@@ -39,6 +39,8 @@ export const makes: string[] = [
   'Volvo',
 ]
 
+export const car_price_per_day_in_cents = 4200
+
 type OptionType = {
   title: string
   value: string

@@ -9,9 +9,9 @@ import ButtonMobileBurger from './ButtonMobileBurger'
 
 const MOBILE_MENU_LINKS = (isSignedIn: boolean) => [
   { id: 1, title: 'Home', href: '/' },
-  { id: 2, title: `${isSignedIn ? 'SignOut' : 'SignIn'}`, href: '/signin' },
-  { id: 3, title: 'Cart', href: '/cart' },
-  { id: 4, title: 'My Bookings', href: '/bookings' },
+  { id: 2, title: `${isSignedIn ? 'Sign out' : 'Sign in'}`, href: '/signin' },
+  { id: 3, title: 'My Bookings', href: '/bookings' },
+  { id: 4, title: 'New Booking', href: '/bookings/new' },
   { id: 5, title: 'Company', href: '/company' },
   { id: 6, title: 'About', href: '/about' },
   { id: 7, title: 'Socials', href: '/socials' },
@@ -42,7 +42,8 @@ const MobileMenu = () => {
               {/* links */}
               {MOBILE_MENU_LINKS(isSignedIn).map((link) => {
                 const linkIsSignInOrSignOut =
-                  link.title === 'SignIn' || 'SignOut'
+                  link.title === 'Sign in' || link.title === 'Sign out'
+
                 return (
                   <li key={link.id}>
                     <CustomLink
@@ -53,7 +54,7 @@ const MobileMenu = () => {
                       }
                       handleClick={() => {
                         linkIsSignInOrSignOut && isSignedIn
-                          ? signOut()
+                          ? signOut({ callbackUrl: '/' })
                           : toggleMobileMenu()
                       }}
                     >

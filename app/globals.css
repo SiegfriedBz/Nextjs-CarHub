@@ -27,7 +27,7 @@ body {
 
   h4,
   .h4 {
-    @apply text-lg text-primary-dark md:text-xl;
+    @apply text-sm text-primary-dark sm:text-lg md:text-xl;
   }
 
   h5,
@@ -52,12 +52,12 @@ body {
 }
 
 @layer components {
-  #header {
+  .header {
     @apply fixed left-0 right-0 top-0 z-[1000] flex h-[var(--navbar-height)]
       w-full items-center justify-between border-b border-primary-dark bg-light p-4 lg:px-16 xl:px-32 2xl:px-48;
   }
 
-  #footer {
+  .footer {
     @apply flex 
       h-[calc(var(--navbar-height)*2/3)] items-center justify-between border-t border-primary-dark bg-light p-4 md:h-[var(--navbar-height)] lg:px-16 xl:px-32 2xl:px-48;
   }
@@ -76,16 +76,20 @@ body {
     @apply rounded-lg px-8 py-4 text-lg uppercase tracking-wide hover:scale-110;
   }
 
+  .btn-medium {
+    @apply rounded-lg px-6 py-3 text-base uppercase tracking-wide hover:scale-110;
+  }
+
   .btn-small {
     @apply rounded-md px-4 py-2 text-sm hover:scale-105;
   }
 
   .btn-outline {
-    @apply border-2 border-gray-300 text-dark/50 transition duration-500 ease-in-out hover:scale-100 hover:bg-gradient-to-r hover:from-primary-dark hover:to-dark/80 hover:text-light;
+    @apply border-2 border-gray-300 text-dark/50 transition duration-500 ease-in-out hover:scale-100 hover:bg-gradient-to-r hover:from-primary-dark hover:to-primary-light hover:text-light;
   }
 
   .btn-gradient {
-    @apply bg-gradient-to-r from-primary to-primary-light font-bold text-light;
+    @apply bg-gradient-to-r from-primary-dark to-primary-light font-bold text-light;
   }
 
   /** link */
@@ -108,11 +112,11 @@ body {
       after:ease-in-out 
       after:content-[""] 
       hover:after:w-full 
-      hover:after:bg-primary/75 
+      hover:after:bg-gradient-to-r hover:after:from-primary-dark  hover:after:to-primary-light
       focus:after:w-full
-      focus:after:bg-primary/75
+      focus:after:bg-gradient-to-r focus:after:from-primary-dark  focus:after:to-primary-light
       active:after:w-full
-      active:after:bg-primary/75;
+      active:after:bg-gradient-to-r active:after:from-primary-dark  active:after:to-primary-light;
   }
 
   /** text */

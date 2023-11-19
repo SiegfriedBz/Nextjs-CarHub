@@ -76,8 +76,6 @@ export async function POST(request: Request) {
 
     const booking = JSON.parse(JSON.stringify(bookingPrisma))
 
-    console.log(booking)
-
     return NextResponse.json({ booking }, { status: 200 })
   } catch (error) {
     return NextResponse.json(`Error: ${error}`, { status: 500 })

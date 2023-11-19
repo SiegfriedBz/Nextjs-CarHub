@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { toast } from 'react-toastify'
 import LoadingPulse from '@/components/LoadingPulse'
 import BookingDetails from '@/components/BookingDetails'
+import { sendBrevoTransactionEmail } from '@/utils/sendBrevoTransactionEmail'
 import type { BookingType } from '@/types'
 
 type Props = {
@@ -24,6 +25,7 @@ const StripeSuccessPage = ({ params }: Props) => {
 
   // session
   const { data: session, status } = useSession()
+  const userName = session?.user?.name
   const userEmail = session?.user?.email
   const isLoading = status === 'loading'
 
@@ -35,7 +37,10 @@ const StripeSuccessPage = ({ params }: Props) => {
     null
   )
 
+  /** update booking payment_intent_id */
   const updateBooking = useCallback(async () => {
+    let updatedBooking: BookingType | null = null
+
     try {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/stripe/confirm`,
@@ -49,18 +54,42 @@ const StripeSuccessPage = ({ params }: Props) => {
       if (!response.ok) throw new Error('Failed to update the order status')
 
       const data = await response.json()
+      updatedBooking = data.updatedBooking as BookingType
+      const confirmedBookingMessage = data.message
 
-      const { updatedBooking, message } = data
       setConfirmedBooking(updatedBooking)
-
-      // notify user
-      toast.success(message)
-    } catch (error) {
+      /** user notifications */
+      // 1. notify user with confirmed booking
+      toast.success(confirmedBookingMessage)
+    } catch (error: any) {
       console.log(error)
       // notify user
-      toast.error("Something went wrong, we couldn't update your order status")
+      toast.error("Something went wrong, we couldn't update your order status.")
     }
-  }, [bookingId, paymentIntentId])
+
+    if (updatedBooking == null) return
+
+    try {
+      /**  send booking confirmation email if booking was updated */
+      const { car_make, car_model } = updatedBooking
+      const emailResponse = await sendBrevoTransactionEmail({
+        car_make,
+        car_model,
+        recipientName: userName || userEmail?.split('@')[0] || 'Customer',
+        recipientEmail: userEmail as string,
+      })
+
+      /** user notifications */
+      // 2. notify user with sent booking confirmation email
+      if (emailResponse != undefined) {
+        toast.info(
+          `Confirmation email sent to ${userEmail} - please check your spam folder.`
+        )
+      }
+    } catch (error: any) {
+      console.log(error)
+    }
+  }, [bookingId, paymentIntentId, userEmail, userName])
 
   useEffect(() => {
     updateBooking()

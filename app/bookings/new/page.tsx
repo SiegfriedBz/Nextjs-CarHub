@@ -4,6 +4,7 @@ import React, { useState, useEffect, useCallback, useRef } from 'react'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
+import { toast } from 'react-toastify'
 import PickCar from './(components)/PickCar'
 import PickDates from './(components)/PickDates'
 import ConfirmSelection from './(components)/ConfirmSelection'
@@ -34,6 +35,8 @@ const NewBookingPage = () => {
   useEffect(() => {
     if (isLoading || isAuthenticated) return
 
+    // notify user & redirect to sign in page
+    toast.info('Please sign in to make a booking.')
     const timer: ReturnType<typeof setTimeout> = setTimeout(() => {
       router.push('/signin')
     }, 1500)

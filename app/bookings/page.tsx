@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { Metadata } from 'next'
 import { headers } from 'next/headers'
 import { getServerSession } from 'next-auth'

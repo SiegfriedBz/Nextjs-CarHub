@@ -3,11 +3,12 @@
 import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
+import { toast } from 'react-toastify'
 import BookingDetails from '@/components/BookingDetails'
 import LoadingPulse from '@/components/LoadingPulse'
 
 import type { BookingType } from '@/types'
-import { useRouter } from 'next/navigation'
 
 const BookingsList = () => {
   //  router
@@ -15,10 +16,29 @@ const BookingsList = () => {
 
   // session
   const { data: session, status } = useSession()
+  const isLoading = status === 'loading'
+  const isAuthenticated = status === 'authenticated'
   const userEmail = session?.user?.email
 
   // state
   const [bookings, setBookings] = useState<BookingType[] | null>(null)
+
+  /** redirect to sign in page if not authenticated */
+  useEffect(() => {
+    if (isLoading || isAuthenticated) return
+
+    // notify user & redirect to sign in page
+    toast.info('Please sign in to view your bookings.')
+    const timer: ReturnType<typeof setTimeout> = setTimeout(() => {
+      router.push('/signin')
+    }, 1500)
+
+    return () => {
+      if (timer != null) {
+        clearTimeout(timer)
+      }
+    }
+  }, [isLoading, isAuthenticated, router])
 
   // get bookings
   const getBookings = useCallback(async () => {
@@ -55,18 +75,11 @@ const BookingsList = () => {
     })()
   }, [userEmail, getBookings])
 
-  // redirect if not logged in
-  if (!session || !userEmail) {
-    // redirect
-    router.push('/signin')
-    return null
-  }
+  if (bookings == undefined || userEmail == undefined) return <LoadingPulse />
 
   return (
     <ul className='flex flex-col gap-y-4'>
-      {bookings == undefined ? (
-        <LoadingPulse />
-      ) : bookings && bookings.length === 0 ? (
+      {bookings && bookings.length === 0 ? (
         <>
           <h3 className='my-0'>You have no bookings yet.</h3>
           <h3>

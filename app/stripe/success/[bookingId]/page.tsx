@@ -24,8 +24,8 @@ const StripeSuccessPage = ({ params }: Props) => {
 
   // session
   const { data: session, status } = useSession()
+  const userEmail = session?.user?.email
   const isLoading = status === 'loading'
-  const isAuthenticated = status === 'authenticated'
 
   // router
   const router = useRouter()
@@ -67,7 +67,7 @@ const StripeSuccessPage = ({ params }: Props) => {
   }, [updateBooking])
 
   if (!session || isLoading) return <LoadingPulse />
-  if (!isAuthenticated) return router.push('/signin')
+  if (!userEmail) return router.push('/signin')
 
   return (
     <section className='section-top'>
@@ -79,7 +79,7 @@ const StripeSuccessPage = ({ params }: Props) => {
           <LoadingPulse />
         ) : (
           <>
-            <BookingDetails session={session} booking={confirmedBooking} />
+            <BookingDetails userEmail={userEmail} booking={confirmedBooking} />
             <Link
               href='/bookings'
               className='btn-small md:btn-medium btn-gradient mt-2 w-fit self-end'

@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { redirect } from 'next/navigation'
 import { prisma } from '@/utils/prismaClient'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/utils/authOptions'
@@ -9,6 +10,11 @@ export async function GET(request: Request) {
   /** get user from session */
   const userIsAdmin = !!session?.user?.isAdmin
   const userEmail = session?.user?.email
+
+  /** redirect to sign in page if user not logged in */
+  if (!userEmail) {
+    return redirect('/api/auth/signin')
+  }
 
   /** get full user data from db */
   const fullUser = await prisma.user.findUnique({

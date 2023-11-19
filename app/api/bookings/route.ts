@@ -5,13 +5,24 @@ import { authOptions } from '@/utils/authOptions'
 
 export async function GET(request: Request) {
   const session = await getServerSession(authOptions)
-  console.log(session)
+
+  // get user from session
+  const userIsAdmin = !!session?.user?.isAdmin
+  const userEmail = session?.user?.email
+  // get full user data from db
+  const fullUser = await prisma.user.findUnique({
+    where: { email: userEmail as string },
+  })
+
+  if (!fullUser?.id) {
+    return NextResponse.json(`Error: User not found`, { status: 401 })
+  }
 
   try {
     const bookings = await prisma.booking.findMany({
-      include: {
-        user: true,
-      },
+      // get all bookings if user is admin
+      // otherwise, get only bookings for the logged in user
+      where: userIsAdmin ? {} : { userId: fullUser?.id as string },
     })
 
     return NextResponse.json({ bookings }, { status: 200 })
@@ -26,9 +37,6 @@ export async function POST(request: Request) {
   if (!session || !session.user) {
     return NextResponse.json(`Error: Not logged in`, { status: 401 })
   }
-  console.log(session)
-  console.log(session.user)
-  console.log(session.user.email)
 
   const user = await prisma.user.findUnique({
     where: { email: session.user.email as string },
@@ -39,7 +47,6 @@ export async function POST(request: Request) {
   }
 
   const body = await request.json()
-  console.log(body)
 
   const checkin = new Date(body.checkin)
   const checkout = new Date(body.checkout)

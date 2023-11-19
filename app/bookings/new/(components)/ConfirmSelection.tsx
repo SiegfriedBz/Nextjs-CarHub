@@ -61,13 +61,11 @@ const ConfirmSelection = ({
         }
       )
 
-      console.log(response)
       if (!response.ok) {
         throw new Error('Something went wrong')
       }
 
       const data = await response.json()
-      console.log(data)
       const bookingId = data.booking.id
 
       // notify user

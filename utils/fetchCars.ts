@@ -69,8 +69,6 @@ export function generateCarImageUrl({
   carData: CarData
   angle?: string
 }) {
-  console.log(carData)
-
   const { make, model, year } = carData
 
   const url = new URL(`https://cdn.imagin.studio/getimage`)

@@ -39,7 +39,7 @@ const GoogleSignIn = () => {
           >
             <div className='flex items-center justify-center gap-2'>
               <Image
-                src='/google.png'
+                src='/images/google.png'
                 width={15}
                 height={15}
                 alt='Google logo'

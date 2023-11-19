@@ -56,7 +56,7 @@ const Hero = () => {
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: [0, 1.25, 1] }}
           transition={{ duration: 0.75 }}
-          src='/hero.png'
+          src='/images/hero.png'
           width={480}
           height={480}
           className='h-full w-full object-cover'

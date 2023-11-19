@@ -3,14 +3,13 @@ import LoadingPulse from '@/components/LoadingPulse'
 import { generateCarImageUrl } from '@/utils/fetchCars'
 import { formatDate } from '@/utils/formatDate'
 import type { BookingType } from '@/types'
-import type { Session } from 'next-auth'
 
 type Props = {
   booking: BookingType
-  session: Session
+  userEmail: string
 }
 
-const BookingDetails = ({ booking, session }: Props) => {
+const BookingDetails = ({ booking, userEmail }: Props) => {
   const {
     id,
     checkin,
@@ -23,8 +22,6 @@ const BookingDetails = ({ booking, session }: Props) => {
     car_fuel_type,
     total_price_in_cents,
   } = booking
-
-  const userEmail = session?.user?.email
 
   if (!userEmail) return <LoadingPulse />
 

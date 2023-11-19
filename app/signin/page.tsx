@@ -10,7 +10,12 @@ const SignInPage = () => {
     <section className='section-top flex w-full flex-col items-center justify-center gap-4 md:flex-row md:gap-16'>
       {/* IMG */}
       <div className='relative h-[28rem] w-full flex-1'>
-        <Image src='/hero.png' alt='sign in' fill className='object-contain' />
+        <Image
+          src='/images/hero.png'
+          alt='sign in'
+          fill
+          className='object-contain'
+        />
       </div>
 
       {/* CTA */}
@@ -27,7 +32,12 @@ const SignInPage = () => {
           )}
         >
           <div className='flex items-center justify-center gap-2'>
-            <Image src='/google.png' width={35} height={35} alt='Google logo' />
+            <Image
+              src='/images/google.png'
+              width={35}
+              height={35}
+              alt='Google logo'
+            />
             Sign in with Google
           </div>
         </CustomButton>

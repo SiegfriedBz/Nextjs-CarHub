@@ -1,18 +1,40 @@
+import { Metadata } from 'next'
+import { headers } from 'next/headers'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/utils/authOptions'
 import { redirect } from 'next/navigation'
-import { prisma } from '@/utils/prismaClient'
 import BookingDetails from '@/components/BookingDetails'
+import LoadingPulse from '@/components/LoadingPulse'
 import type { BookingType } from '@/types'
 
-async function getData() {
+export const metadata: Metadata = {
+  title: 'Car Hub | My Bookings',
+  openGraph: {
+    title: 'Car Hub | My Bookings',
+    description:
+      'Car Hub: Your Key to Seamless Car Rentals. Choose, Book, Drive – Simplifying Your Journey.',
+  },
+}
+
+async function getData(userEmail: string, userIsAdmin: boolean = false) {
   // fetch bookings from DB
   try {
-    let bookings = await prisma.booking.findMany({
-      include: {
-        user: true,
-      },
-    })
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/bookings`,
+      {
+        method: 'GET',
+        // send the cookie along with the request
+        headers: headers(),
+      }
+    )
+
+    if (!response.ok) {
+      throw new Error('Error fetching bookings')
+    }
+
+    const data = await response.json()
+    console.log(data)
+    const { bookings } = data
 
     return bookings
   } catch (error) {
@@ -23,14 +45,18 @@ async function getData() {
 
 export default async function BookingsPage() {
   const session = await getServerSession(authOptions)
+  const userEmail = session?.user?.email
+  const userIsAdmin = !!session?.user?.isAdmin
 
   // redirect if not logged in
-  if (!session) {
+  if (!session || !userEmail) {
     // redirect
     return redirect('/signin')
   }
 
-  const bookings: BookingType[] = await getData()
+  const bookings: BookingType[] = await getData(userEmail, userIsAdmin)
+
+  if (bookings == undefined) return <LoadingPulse />
 
   return (
     <>
@@ -41,7 +67,7 @@ export default async function BookingsPage() {
             return (
               <BookingDetails
                 key={booking.id}
-                session={session}
+                userEmail={userEmail}
                 booking={booking}
               />
             )

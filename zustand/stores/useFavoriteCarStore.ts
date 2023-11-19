@@ -20,7 +20,7 @@ const useFavoriteCarStore = create(
     (set) => ({
       favoriteCars: [],
       addToFavoriteCars: (car) =>
-        set((state) => ({ favoriteCars: [...state.favoriteCars, car] })),
+        set((state) => ({ favoriteCars: [car, ...state.favoriteCars] })),
       removeFromFavoriteCars: (carModel, carTransmission) =>
         set((state) => ({
           favoriteCars: state.favoriteCars.filter(

@@ -57,12 +57,12 @@ const CarCard = ({ car }: Props) => {
           />
         </div>
 
-        {/* logos */}
+        {/* other car details */}
         <div className='relative mb-2 mt-4 flex w-full flex-col'>
           <div className='flex w-full justify-between'>
             <div className='flex flex-col items-center gap-2'>
               <Image
-                src='/steering-wheel.svg'
+                src='/images/steering-wheel.svg'
                 alt='transmission'
                 width={25}
                 height={25}
@@ -70,11 +70,21 @@ const CarCard = ({ car }: Props) => {
               <p className='text-sm uppercase'>{transmissionDisplay}</p>
             </div>
             <div className='flex flex-col items-center gap-2'>
-              <Image src='/tire.svg' alt='drive' width={25} height={25} />
+              <Image
+                src='/images/tire.svg'
+                alt='drive'
+                width={25}
+                height={25}
+              />
               <p className='text-sm uppercase'>{drive}</p>
             </div>
             <div className='flex flex-col items-center gap-2'>
-              <Image src='/gas.svg' alt='city_mpg' width={25} height={25} />
+              <Image
+                src='/images/gas.svg'
+                alt='city_mpg'
+                width={25}
+                height={25}
+              />
               <p className='text-sm uppercase'>{city_mpg} MPG</p>
             </div>
           </div>

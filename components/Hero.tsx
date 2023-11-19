@@ -48,10 +48,10 @@ const Hero = () => {
           Explore cars
         </CustomButton>
       </div>
-      {/* HERO BG-IMG CONTAINER */}
+      {/* HERO BG-IMG CONTAINER for desktop */}
       <div className='hero-bg'></div>
-      {/* HERO IMG CONTAINER */}
-      <div className='relative flex flex-1 items-center bg-[url("/hero-bg.png")] bg-cover bg-center bg-no-repeat p-4 md:bg-none md:p-0'>
+      {/* HERO IMG CONTAINER with HERO BG-IMG CONTAINER for mobile */}
+      <div className='relative flex flex-1 items-center bg-[url("/images/hero-bg.png")] bg-cover bg-center bg-no-repeat p-4 md:bg-none md:p-0'>
         <MotionImage
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: [0, 1.25, 1] }}

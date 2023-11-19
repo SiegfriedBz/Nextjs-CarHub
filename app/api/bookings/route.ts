@@ -6,23 +6,30 @@ import { authOptions } from '@/utils/authOptions'
 export async function GET(request: Request) {
   const session = await getServerSession(authOptions)
 
-  // get user from session
+  /** get user from session */
   const userIsAdmin = !!session?.user?.isAdmin
   const userEmail = session?.user?.email
-  // get full user data from db
+
+  /** get full user data from db */
   const fullUser = await prisma.user.findUnique({
     where: { email: userEmail as string },
   })
 
+  /** return 401 status if no user found */
   if (!fullUser?.id) {
     return NextResponse.json(`Error: User not found`, { status: 401 })
   }
 
   try {
+    /**
+     * get all bookings if user is admin
+     * otherwise, get only bookings for the logged in user
+     */
     const bookings = await prisma.booking.findMany({
-      // get all bookings if user is admin
-      // otherwise, get only bookings for the logged in user
       where: userIsAdmin ? {} : { userId: fullUser?.id as string },
+      orderBy: {
+        createdAt: 'desc',
+      },
     })
 
     return NextResponse.json({ bookings }, { status: 200 })
@@ -32,7 +39,7 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
-  // get user from session
+  /** get user from session */
   const session = await getServerSession(authOptions)
   if (!session || !session.user) {
     return NextResponse.json(`Error: Not logged in`, { status: 401 })
@@ -42,6 +49,7 @@ export async function POST(request: Request) {
     where: { email: session.user.email as string },
   })
 
+  /** return 401 status if no user found */
   if (!user?.id) {
     return NextResponse.json(`Error: User not found`, { status: 401 })
   }
@@ -52,7 +60,7 @@ export async function POST(request: Request) {
   const checkout = new Date(body.checkout)
 
   try {
-    // create booking
+    /** create booking */
     const bookingPrisma = await prisma.booking.create({
       data: {
         ...body,

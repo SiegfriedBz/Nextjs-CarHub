@@ -1,5 +1,3 @@
-import { CarType } from '@/types'
-
 // cars
 type FiltersType = {
   make?: string

@@ -1,9 +1,9 @@
 import Link from 'next/link'
 import { twMerge } from 'tailwind-merge'
 import Logo from './Logo'
-import DesktopMenu from './DesktopMenu'
-import GoogleSignIn from './GoogleSignIn'
-import MobileMenu from './MobileMenu'
+import UserGreeting from './UserGreeting'
+import DesktopMenu from './(desktop)/DesktopMenu'
+import MobileMenu from './(mobile)/MobileMenu'
 
 const Navbar = () => {
   return (
@@ -20,13 +20,11 @@ const Navbar = () => {
         </h2>
       </Link>
 
-      <div className='flex items-center gap-x-4'>
-        {/* desktop menu hidden md:flex */}
-        <DesktopMenu />
+      {/* signed in user name */}
+      <UserGreeting />
 
-        {/* auth */}
-        <GoogleSignIn />
-      </div>
+      {/* desktop menu hidden md:flex */}
+      <DesktopMenu />
 
       {/* mobile menu md:hidden */}
       <MobileMenu />

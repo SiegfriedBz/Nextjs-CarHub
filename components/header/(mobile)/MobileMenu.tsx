@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { twMerge } from 'tailwind-merge'
 import ButtonMobileBurger from './ButtonMobileBurger'
+import Image from 'next/image'
 
 const MOBILE_MENU_LINKS = (isSignedIn: boolean) => [
   { id: 1, title: 'Home', href: '/' },
@@ -63,7 +64,19 @@ const MobileMenu = () => {
                           'text-3xl tracking-wide text-light/80'
                         )}
                       >
-                        {link.title}
+                        {linkIsSignInOrSignOut ? (
+                          <span className='inline-flex items-center justify-center gap-2'>
+                            <Image
+                              src='/images/google.png'
+                              width={24}
+                              height={24}
+                              alt='Google logo'
+                            />
+                            {link.title}
+                          </span>
+                        ) : (
+                          link.title
+                        )}
                       </h2>
                     </CustomLink>
                   </li>
@@ -83,7 +96,9 @@ type CustomLinkProps = {
   children: React.ReactNode
   href?: string
   handleClick: () => void
+  isMobile?: boolean
 }
+
 const CustomLink = (props: CustomLinkProps) => {
   const isLink = props.href != undefined
   const children = props.children

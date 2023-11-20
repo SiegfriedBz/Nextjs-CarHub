@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { twMerge } from 'tailwind-merge'
+import DesktopSignin from './DesktopSignin'
 
 const DESKTOP_MENU_LINKS = [
   { id: 1, title: 'New Booking', href: '/bookings/new', className: '' },
@@ -11,7 +12,7 @@ const DESKTOP_MENU_LINKS = [
 
 const DesktopMenu = () => {
   return (
-    <div className='hidden md:flex'>
+    <div className='hidden md:flex md:items-center md:gap-x-4'>
       <ul className='flex gap-x-4'>
         {DESKTOP_MENU_LINKS.map((link) => (
           <li key={link.id} className={link.className}>
@@ -23,6 +24,8 @@ const DesktopMenu = () => {
           </li>
         ))}
       </ul>
+      {/* auth */}
+      <DesktopSignin />
     </div>
   )
 }

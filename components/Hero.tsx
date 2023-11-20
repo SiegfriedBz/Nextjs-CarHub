@@ -17,7 +17,6 @@ const Hero = () => {
 
   return (
     <div
-      id='hero'
       // navbar-height 6rem
       className='flex scroll-mt-[6rem] flex-col items-center justify-center gap-4 md:flex-row md:gap-0'
     >

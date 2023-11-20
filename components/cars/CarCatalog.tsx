@@ -1,3 +1,6 @@
+'use client'
+
+import { useRef } from 'react'
 import CarList from './CarList'
 import SearchBar from '@/components/searchBar/SearchBar'
 import FilterBox from '@/components/searchBar/FilterBox'
@@ -9,8 +12,16 @@ type Props = {
 }
 
 const CarCatalog = ({ cars }: Props) => {
+  const topRef = useRef<HTMLDivElement>(null)
+
+  const scrollToTop = () => {
+    if (!topRef.current) return
+
+    topRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
-    <div className='relative'>
+    <div ref={topRef} className='relative scroll-mt-52'>
       {/* cars search */}
       <SearchBar />
       {/* cars filter */}
@@ -20,7 +31,7 @@ const CarCatalog = ({ cars }: Props) => {
       </div>
 
       {/* cars list */}
-      <CarList cars={cars} />
+      <CarList cars={cars} scrollToTop={scrollToTop} />
     </div>
   )
 }

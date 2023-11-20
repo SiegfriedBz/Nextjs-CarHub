@@ -127,13 +127,13 @@ body {
   /** SearchBar */
   .search-make-combo-wrapper {
     min-width: 8rem;
-    @apply rounded-lg bg-gray-100 p-2 outline-none sm:w-[50vw];
+    @apply rounded-md sm:w-[50vw];
   }
 
   .search-model-input {
     min-width: 8rem;
     max-width: 100%;
-    @apply h-12 rounded-lg bg-white p-2 outline-none sm:w-[25vw];
+    @apply h-12 rounded-md bg-white p-2 outline-none sm:w-[25vw];
   }
 
   /** MobileMenu */

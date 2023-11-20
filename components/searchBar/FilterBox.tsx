@@ -1,7 +1,6 @@
 'use client'
 
-import { Fragment } from 'react'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState, Fragment } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import DoubleChevron from './DoubleChevron'
 import { useRouter } from 'next/navigation'
@@ -38,7 +37,7 @@ const FilterBox = ({ paramName, options }: Props) => {
   }, [handleFilter])
 
   return (
-    <div className='z-10 flex w-[6.5rem] flex-col rounded-md border-2 border-gray-100 bg-light py-2 text-dark/60 shadow-md shadow-gray-100'>
+    <div className='z-10 flex w-[6.5rem] flex-col rounded-md border-2 border-gray-100 bg-white py-2 text-dark/60 shadow-sm shadow-gray-100'>
       <Listbox value={selected} onChange={(e) => setSelected(e)}>
         <div className='relative '>
           <Listbox.Button>
@@ -55,17 +54,17 @@ const FilterBox = ({ paramName, options }: Props) => {
             leaveTo='opacity-0'
           >
             <Listbox.Options>
-              <div className='absolute z-20 mt-2 flex w-[6.5rem] flex-col items-center rounded-md border-2 border-gray-100 bg-light px-2 shadow-md shadow-gray-100'>
+              <div className='absolute z-20 mt-2 flex w-[6.5rem] flex-col items-center rounded-md border-2 border-gray-100 bg-white shadow-sm shadow-gray-100'>
                 {options.map((option, index) => (
                   <Listbox.Option
                     key={`${option}-${index}`}
                     value={option}
-                    className='bg-light'
+                    className='w-[6.25rem]'
                   >
                     {({ active }) => (
                       <span
-                        className={`inline-block w-[6.5rem] px-2 ${
-                          active ? 'bg-primary-light text-light' : 'bg-light'
+                        className={`inline-block w-[6.25rem] border-collapse rounded-md px-2 ${
+                          active ? 'bg-primary-light text-light' : 'bg-white'
                         }`}
                       >
                         {option.title}

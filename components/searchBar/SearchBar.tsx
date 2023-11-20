@@ -33,9 +33,14 @@ const SearchBar = () => {
       newSearchParams.delete('model')
     }
 
-    const newPath = `${window.location.pathname}?${newSearchParams.toString()}`
-
-    router.push(newPath, { scroll: false })
+    const stringParams = newSearchParams.toString()
+    if (!stringParams) {
+      return router.push(window.location.pathname, { scroll: false })
+    } else {
+      return router.push(`${window.location.pathname}?${stringParams}`, {
+        scroll: false,
+      })
+    }
   }
 
   const handleReset = () => {
@@ -48,7 +53,7 @@ const SearchBar = () => {
     <div className='my-4 flex w-full flex-col text-dark/60'>
       <form
         onSubmit={handleSearch}
-        className='flex w-full items-center justify-between rounded-lg bg-gray-100'
+        className='flex w-full items-center justify-between rounded-md bg-gray-100'
       >
         {/* makes */}
         <div className='search-make-combo-wrapper'>
@@ -68,6 +73,8 @@ const SearchBar = () => {
           onChange={(e) => setSelectedModel(e.target.value.trim())}
           className='search-model-input'
         />
+
+        {/* buttons */}
         <div className='mx-2 flex min-w-fit items-center justify-between'>
           {/* search btn */}
           <button type='submit' className='flex items-center justify-center'>

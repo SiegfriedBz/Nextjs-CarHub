@@ -1,5 +1,3 @@
-export const dynamic = 'force-dynamic'
-
 import { Metadata } from 'next'
 import BookingsList from './(components)/BookingsList'
 

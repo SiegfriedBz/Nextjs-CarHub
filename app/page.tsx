@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/utils/authOptions'
 import Hero from '@/components/Hero'

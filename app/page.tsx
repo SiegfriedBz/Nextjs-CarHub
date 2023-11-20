@@ -41,7 +41,7 @@ export default async function Home({ searchParams }: Props) {
 
   return (
     <main className='overflow-hidden'>
-      <section className='section-top flex flex-col justify-center'>
+      <section id='hero' className='section-top flex flex-col justify-center'>
         <Hero />
       </section>
 

@@ -96,7 +96,6 @@ type CustomLinkProps = {
   children: React.ReactNode
   href?: string
   handleClick: () => void
-  isMobile?: boolean
 }
 
 const CustomLink = (props: CustomLinkProps) => {

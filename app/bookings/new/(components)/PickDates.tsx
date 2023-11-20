@@ -53,7 +53,17 @@ const PickDates = ({
         }
       `}
       </style>
-      <div className='mx-auto w-fit rounded-md bg-blue-100 shadow-blue-200 ring ring-blue-100 sm:mx-0'>
+      <div
+        className='mx-auto 
+          w-fit
+          rounded-md
+        bg-blue-100
+        shadow-blue-200
+          ring
+        ring-blue-100
+          sm:mx-0
+        '
+      >
         <DateRangePicker
           ranges={[selectionRange]}
           onChange={handleSelect}

@@ -26,7 +26,14 @@ const FilterBox = ({ paramName, options }: Props) => {
       newSearchParams.delete(paramName)
     }
 
-    const newPath = `${window.location.pathname}?${newSearchParams.toString()}`
+    const newSearchParamsString = newSearchParams.toString()
+
+    let newPath: string = ''
+    if (newSearchParamsString !== '') {
+      newPath = `${window.location.pathname}` as string
+    } else {
+      newPath = `${window.location.pathname}?${newSearchParamsString}` as string
+    }
 
     router.push(newPath, { scroll: false })
   }, [selected, paramName, router])
@@ -37,12 +44,25 @@ const FilterBox = ({ paramName, options }: Props) => {
   }, [handleFilter])
 
   return (
-    <div className='z-10 flex w-[6.5rem] flex-col rounded-md border-2 border-gray-100 bg-white py-2 text-dark/60 shadow-sm shadow-gray-100'>
+    <div
+      className='z-10 flex w-[6.5rem] flex-col 
+        rounded-md 
+        border-2 border-gray-100 
+      bg-white 
+        py-2 
+        text-primary-dark
+      shadow-sm 
+       shadow-gray-100
+      dark:border
+      dark:bg-transparent '
+    >
       <Listbox value={selected} onChange={(e) => setSelected(e)}>
         <div className='relative '>
           <Listbox.Button>
             <div className='flex w-[6.5rem] justify-between px-2'>
-              <span>{selected.title}</span>
+              <span className='opacity-80 dark:opacity-80'>
+                {selected.title}
+              </span>
               <DoubleChevron />
             </div>
           </Listbox.Button>
@@ -54,7 +74,18 @@ const FilterBox = ({ paramName, options }: Props) => {
             leaveTo='opacity-0'
           >
             <Listbox.Options>
-              <div className='absolute z-20 mt-2 flex w-[6.5rem] flex-col items-center rounded-md border-2 border-gray-100 bg-white shadow-sm shadow-gray-100'>
+              <div
+                className='absolute z-20 mt-4 
+                flex 
+                w-[6.5rem]
+                flex-col items-center
+                rounded-md
+                border-2 border-gray-100
+                bg-white
+                shadow-sm
+                shadow-gray-100 dark:border dark:bg-gradient-to-r
+                dark:from-slate-900 dark:to-slate-800'
+              >
                 {options.map((option, index) => (
                   <Listbox.Option
                     key={`${option}-${index}`}
@@ -63,8 +94,12 @@ const FilterBox = ({ paramName, options }: Props) => {
                   >
                     {({ active }) => (
                       <span
-                        className={`inline-block w-[6.25rem] border-collapse rounded-md px-2 ${
-                          active ? 'bg-primary-light text-light' : 'bg-white'
+                        className={`inline-block w-[6.25rem] border-collapse rounded-md px-2
+                        opacity-80 dark:opacity-80 
+                        ${
+                          active
+                            ? 'bg-primary-light text-light'
+                            : 'bg-white dark:bg-gradient-to-r dark:from-slate-900 dark:to-slate-800'
                         }`}
                       >
                         {option.title}

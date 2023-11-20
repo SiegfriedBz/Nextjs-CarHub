@@ -16,7 +16,7 @@ const ButtonScrollToTop = ({ scrollToTop }: Props) => {
     >
       <FontAwesomeIcon
         icon={faCircleUp}
-        className='h-4 w-4 rounded-full text-light transition duration-300 ease-in-out hover:scale-110 md:h-6 md:w-6'
+        className='h-4 w-4 rounded-full text-light transition duration-300 ease-in-out hover:scale-110 dark:opacity-80 md:h-6 md:w-6'
       />
     </button>
   )

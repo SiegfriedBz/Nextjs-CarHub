@@ -1,11 +1,18 @@
 'use client'
 
 import Image from 'next/image'
+
 import { signIn, signOut, useSession } from 'next-auth/react'
 import LoadingPulse from '@/components/LoadingPulse'
 import CustomButton from '@/components/buttons/CustomButton'
+import { twMerge } from 'tailwind-merge'
+import { useRouter } from 'next/navigation'
 
 const DesktopSignin = () => {
+  // router
+  const router = useRouter()
+
+  // session
   const { data: session, status } = useSession()
   const isLoading = status === 'loading'
   const isSignedIn = session?.user?.email != undefined
@@ -13,37 +20,43 @@ const DesktopSignin = () => {
   if (isLoading) return <LoadingPulse />
 
   return isSignedIn ? (
-    <span className='hidden md:inline-flex md:items-center'>
+    <>
+      {/* sign out button */}
       <CustomButton
+        className={twMerge(
+          'btn',
+          'btn-small btn-outline hidden w-fit items-center justify-center gap-2 md:inline-flex'
+        )}
         handleClick={() => signOut({ callbackUrl: '/' })}
-        className='btn btn-small btn-outline'
-        disabled={isLoading}
       >
+        <Image
+          src='/images/google.png'
+          width={15}
+          height={15}
+          alt='Google logo'
+        />
         Sign out
       </CustomButton>
-    </span>
+    </>
   ) : (
-    <span className='hidden md:inline-flex'>
+    <>
+      {/* sign in button */}
       <CustomButton
-        handleClick={() =>
-          signIn('google', {
-            callbackUrl: process.env.NEXT_PUBLIC_NEXTAUTH_URL,
-          })
-        }
-        className='btn btn-small btn-outline'
-        disabled={isLoading}
+        className={twMerge(
+          'btn',
+          'btn-small btn-outline hidden w-fit items-center justify-center gap-2 md:inline-flex'
+        )}
+        handleClick={() => router.push('/signin')}
       >
-        <div className='flex items-center justify-center gap-2'>
-          <Image
-            src='/images/google.png'
-            width={15}
-            height={15}
-            alt='Google logo'
-          />
-          Sign in
-        </div>
+        <Image
+          src='/images/google.png'
+          width={15}
+          height={15}
+          alt='Google logo'
+        />
+        Sign in
       </CustomButton>
-    </span>
+    </>
   )
 }
 

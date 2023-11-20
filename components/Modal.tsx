@@ -18,7 +18,11 @@ const Modal = ({ modalIsOpen, closeModal, children }: ModalProps) => {
           animate={modalIsOpen ? 'visible' : ''}
           exit='exit'
           onClick={closeModal}
-          className='fixed bottom-0 left-0 right-0 top-0 z-[99999] w-full backdrop-blur-md'
+          className='fixed 
+            bottom-0 left-0 right-0 top-0 
+            z-[99999] 
+            w-full 
+            backdrop-blur-md'
         >
           <motion.div
             variants={modalWrapperVariants}
@@ -26,11 +30,11 @@ const Modal = ({ modalIsOpen, closeModal, children }: ModalProps) => {
             animate={modalIsOpen ? 'visible' : ''}
             exit='exit'
             className='absolute 
-                bottom-0 left-0
-                right-0 top-0
-                flex h-screen w-full
-                -translate-y-1/2
-                items-center justify-center'
+              bottom-0 left-0
+              right-0 top-0
+              flex h-screen w-full
+              -translate-y-1/2
+              items-center justify-center'
           >
             <ModalMenu>{children}</ModalMenu>
           </motion.div>
@@ -49,19 +53,26 @@ type ModalMenuProps = {
 const ModalMenu = ({ children }: ModalMenuProps) => {
   return (
     <div
-      className='mx-2 flex h-5/6 w-full flex-col items-center
-        justify-center rounded-lg
-        border
-        border-primary-dark 
-        bg-light
-        px-2
+      className='mx-2 flex h-5/6 w-full 
+        flex-col items-center
+        justify-center 
+        rounded-lg
+        border-2
+        border-gray-300
+      bg-light
+      px-2
         py-4
         text-primary-dark
-        opacity-90
-        shadow-sm shadow-primary-dark
-        dark:border-light dark:bg-gray-300/50
-        dark:text-white dark:shadow-sm
-        dark:shadow-light
+      opacity-80
+        shadow-sm
+        shadow-gray-100
+        dark:border 
+      dark:border-light
+      dark:bg-gray-300/50 
+      dark:text-light
+        dark:opacity-80 
+        dark:shadow-sm
+      dark:shadow-gray-100
         sm:mx-12 md:mx-24 lg:mx-32 xl:mx-64'
       onClick={(e) => e.stopPropagation()}
     >

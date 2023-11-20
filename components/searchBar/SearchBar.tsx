@@ -50,10 +50,15 @@ const SearchBar = () => {
   }
 
   return (
-    <div className='my-4 flex w-full flex-col text-dark/60'>
+    <div className='my-4 flex w-full flex-col'>
       <form
         onSubmit={handleSearch}
-        className='flex w-full items-center justify-between rounded-md bg-gray-100'
+        className='flex w-full items-center justify-between 
+          rounded-md 
+          border-2 border-gray-200 
+          shadow-sm
+          shadow-gray-100
+          dark:border'
       >
         {/* makes */}
         <div className='search-make-combo-wrapper'>
@@ -71,14 +76,21 @@ const SearchBar = () => {
           value={selectedModel}
           placeholder='Model...'
           onChange={(e) => setSelectedModel(e.target.value.trim())}
-          className='search-model-input'
+          className='search-model-input 
+          placeholder-primary-dark
+          placeholder-opacity-80 
+          opacity-80
+          dark:placeholder-light dark:placeholder-opacity-80 dark:opacity-80'
         />
 
         {/* buttons */}
         <div className='mx-2 flex min-w-fit items-center justify-between'>
           {/* search btn */}
           <button type='submit' className='flex items-center justify-center'>
-            <FontAwesomeIcon icon={faMagnifyingGlass} className='h-4 w-4' />
+            <FontAwesomeIcon
+              icon={faMagnifyingGlass}
+              className='h-4 w-4 opacity-90 dark:opacity-90'
+            />
           </button>
           {/* reset search btn */}
           <button
@@ -86,7 +98,10 @@ const SearchBar = () => {
             onClick={handleReset}
             className='mx-2 flex items-center justify-center'
           >
-            <FontAwesomeIcon icon={faXmark} className='h-4 w-4' />
+            <FontAwesomeIcon
+              icon={faXmark}
+              className='h-4 w-4 opacity-90 dark:opacity-90'
+            />
           </button>
         </div>
       </form>

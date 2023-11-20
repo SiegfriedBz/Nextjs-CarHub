@@ -13,14 +13,13 @@ const MOBILE_MENU_LINKS = (isSignedIn: boolean) => [
   { id: 2, title: `${isSignedIn ? 'Sign out' : 'Sign in'}`, href: '/signin' },
   { id: 3, title: 'New Booking', href: '/bookings/new' },
   { id: 4, title: 'My Bookings', href: '/bookings' },
-  { id: 5, title: 'Company', href: '/company' },
-  { id: 6, title: 'About', href: '/about' },
-  { id: 7, title: 'Socials', href: '/socials' },
+  { id: 5, title: 'About', href: '/about' },
+  { id: 6, title: 'Company', href: '/company' },
 ]
 
 const MobileMenu = () => {
   // session
-  const { data: session, status } = useSession()
+  const { data: session } = useSession()
   const isSignedIn = session?.user?.email != undefined
 
   // store
@@ -58,26 +57,31 @@ const MobileMenu = () => {
                           : toggleMobileMenu()
                       }}
                     >
-                      <h2
-                        className={twMerge(
-                          'h2',
-                          'text-3xl tracking-wide text-light/80'
-                        )}
-                      >
-                        {linkIsSignInOrSignOut ? (
-                          <span className='inline-flex items-center justify-center gap-2'>
-                            <Image
-                              src='/images/google.png'
-                              width={24}
-                              height={24}
-                              alt='Google logo'
-                            />
-                            {link.title}
-                          </span>
-                        ) : (
-                          link.title
-                        )}
-                      </h2>
+                      {linkIsSignInOrSignOut ? (
+                        <h2
+                          className={twMerge(
+                            'h2',
+                            ' flex items-center justify-center gap-2 text-3xl tracking-wide text-light/80'
+                          )}
+                        >
+                          <Image
+                            src='/images/google.png'
+                            width={24}
+                            height={24}
+                            alt='Google logo'
+                          />
+                          {link.title}
+                        </h2>
+                      ) : (
+                        <h2
+                          className={twMerge(
+                            'h2',
+                            'text-3xl tracking-wide text-light/80'
+                          )}
+                        >
+                          {link.title}
+                        </h2>
+                      )}
                     </CustomLink>
                   </li>
                 )

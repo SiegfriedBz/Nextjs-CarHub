@@ -147,7 +147,7 @@ const NewBookingPage = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className='mt-4 scroll-mt-24'
+              className='mt-8 scroll-mt-24'
             >
               <PickDates
                 startDate={startDate}
@@ -169,7 +169,7 @@ const NewBookingPage = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className='mt-4 scroll-mt-24'
+              className='mt-8 scroll-mt-24'
             >
               <ConfirmSelection
                 selectedCar={selectedCar}

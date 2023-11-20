@@ -8,7 +8,7 @@ const SocialLinks = () => {
         <a href={process.env.NEXT_PUBLIC_LINKEDIN_URL || '/'} target='_blank'>
           <FontAwesomeIcon
             icon={faLinkedinIn}
-            className='text-primary-dark h-6 w-6 transition duration-300 ease-in-out hover:scale-110 md:h-8 md:w-8'
+            className='h-6 w-6 text-primary-dark transition duration-300 ease-in-out hover:scale-110 dark:text-primary md:h-8 md:w-8'
           />
         </a>
       </li>
@@ -16,7 +16,7 @@ const SocialLinks = () => {
         <a href={process.env.NEXT_PUBLIC_GITHUB_URL || ''} target='_blank'>
           <FontAwesomeIcon
             icon={faGithubAlt}
-            className='text-primary-dark h-6 w-6 transition duration-300 ease-in-out hover:scale-110 md:h-8 md:w-8'
+            className='h-6 w-6 text-primary-dark transition duration-300 ease-in-out hover:scale-110 dark:text-primary md:h-8 md:w-8'
           />
         </a>
       </li>

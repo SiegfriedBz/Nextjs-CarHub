@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function BookingsPage() {
   return (
     <>
-      <section className='section-top'>
+      <section className='section-top scroll-mt-24' id='my-bookings'>
         <h1>My Bookings</h1>
         <BookingsList />
       </section>

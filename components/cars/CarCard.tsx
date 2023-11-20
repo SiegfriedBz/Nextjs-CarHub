@@ -30,7 +30,21 @@ const CarCard = ({ car }: Props) => {
       </Modal>
 
       {/* CarCard */}
-      <div className='group relative flex h-96 w-96 cursor-pointer flex-col items-center justify-center rounded-md border border-gray-300 p-8 transition duration-300 ease-in-out hover:shadow-sm hover:shadow-gray-300'>
+      <div
+        className='group
+          relative
+          flex
+          h-[25rem] w-[25rem]
+          cursor-pointer
+          flex-col items-center justify-center
+          rounded-md
+          border-2 border-gray-200 
+          p-8 
+          shadow-gray-100
+        transition duration-300 ease-in-out 
+          hover:shadow-sm
+          hover:shadow-gray-200 dark:border'
+      >
         {/* ToggleFavorite */}
         <ButtonToggleFavorite car={car} />
         {/* brand & model */}
@@ -40,8 +54,26 @@ const CarCard = ({ car }: Props) => {
 
         {/* price */}
         <h2
-          className='h2 relative my-4 self-start ps-3 text-3xl font-bold before:absolute before:-left-3 before:-top-2 before:ps-3 before:text-xl
-      before:font-normal before:content-["\0024"] after:absolute after:-bottom-[0.15rem] after:-right-8 after:text-base after:font-normal after:content-["/day"]
+          className='relative 
+            my-4 self-start ps-3 
+            text-3xl font-bold 
+            
+            before:absolute 
+            before:-left-3 before:-top-2 
+            before:ps-3 
+            before:text-xl
+            before:font-semibold
+          before:text-primary-dark
+            before:content-["\0024"]
+            after:absolute
+
+            after:-bottom-[0.15rem]
+            after:-right-8 
+            after:text-base after:font-semibold
+          after:text-primary-light
+            after:content-["/day"] 
+          dark:before:text-light
+          dark:after:text-light/70
       '
         >
           {car_price_per_day_in_cents / 100}
@@ -58,7 +90,7 @@ const CarCard = ({ car }: Props) => {
         </div>
 
         {/* other car details */}
-        <div className='relative mb-2 mt-4 flex w-full flex-col'>
+        <div className='relative mb-4 mt-2 flex w-full flex-col'>
           <div className='flex w-full justify-between'>
             <div className='flex flex-col items-center gap-2'>
               <Image
@@ -92,7 +124,14 @@ const CarCard = ({ car }: Props) => {
           {/* view more btn */}
           <CustomButton
             handleClick={() => setModalIsOpen(true)}
-            className='btn-small btn-gradient invisible absolute -bottom-9 left-0 right-0 transition duration-200 ease-in-out group-hover:visible'
+            className='btn-small btn-gradient
+             invisible 
+             absolute -bottom-10 left-0 right-0 
+             transition duration-200 ease-in-out 
+             group-hover:visible
+             group-focus:visible
+             group-active:visible
+             '
           >
             View more
           </CustomButton>

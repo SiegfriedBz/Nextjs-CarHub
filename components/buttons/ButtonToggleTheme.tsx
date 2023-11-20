@@ -35,7 +35,7 @@ const ButtonToggleTheme = () => {
       id='button-toggle-theme'
       type='button'
       onClick={toggleColorMode}
-      className='text-2xl text-secondary dark:text-primary'
+      className='text-2xl text-secondary dark:text-light dark:opacity-90'
     >
       {toggleIcon}
     </button>

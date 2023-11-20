@@ -34,11 +34,11 @@ const Footer = () => {
         </div>
 
         {/* brand */}
-        <span className='text-sm'>
+        <span className='mt-2 inline-block text-sm'>
           <span>&copy;{year} </span>
           <Link
             href='/'
-            className='underline-gradient-link text-gradient italic'
+            className='underline-gradient-link font-semibold italic'
           >
             CarHub
           </Link>
@@ -53,10 +53,7 @@ const Footer = () => {
           <span className=''>&copy;{year} </span>
           <Link
             href='/'
-            className={twMerge(
-              'h5',
-              'underline-gradient-link text-gradient text-lg italic'
-            )}
+            className={twMerge('h5', 'underline-gradient-link  text-lg italic')}
           >
             CarHub
           </Link>
@@ -91,10 +88,7 @@ const Footer = () => {
             </ul>
           </li>
           <li className='text-center'>
-            <Link
-              href='/about'
-              className='h5 underline-gradient-link text-gradient text-lg'
-            >
+            <Link href='/about' className='h5 underline-gradient-link  text-lg'>
               About
             </Link>
             <ul>
@@ -109,32 +103,6 @@ const Footer = () => {
               <li>
                 <Link href='/about' className='h6 underline-gradient-link'>
                   Featured
-                </Link>
-              </li>
-            </ul>
-          </li>
-          <li className='hidden text-center lg:block'>
-            <Link
-              href='/company'
-              className='h5 underline-gradient-link text-gradient text-lg'
-            >
-              Socials
-            </Link>
-            <ul>
-              <li>
-                <Link
-                  href='/socials#events'
-                  className='h6 underline-gradient-link'
-                >
-                  Events
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href='/socials#invite-a-friend'
-                  className='h6 underline-gradient-link'
-                >
-                  Invite a friend
                 </Link>
               </li>
             </ul>

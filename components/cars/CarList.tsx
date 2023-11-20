@@ -41,7 +41,7 @@ const CarList = ({ cars, scrollToTop }: Props) => {
             <button
               type='reset'
               onClick={handleReset}
-              className='underline-gradient-link text-gradient italic'
+              className='underline-gradient-link  italic'
             >
               Reset
             </button>{' '}

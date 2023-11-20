@@ -4,18 +4,14 @@ import Logo from './Logo'
 import UserGreeting from './UserGreeting'
 import DesktopMenu from './(desktop)/DesktopMenu'
 import MobileMenu from './(mobile)/MobileMenu'
+import ButtonToggleTheme from '@/components/buttons/ButtonToggleTheme'
 
 const Navbar = () => {
   return (
     <header id='header' className='header'>
       <Link href='/' className='flex items-center gap-2'>
         <Logo />
-        <h2
-          className={twMerge(
-            'h2',
-            ' text-gradient hidden text-4xl italic sm:block'
-          )}
-        >
+        <h2 className={twMerge('h2', '  hidden text-4xl italic sm:block')}>
           CarHub
         </h2>
       </Link>
@@ -24,10 +20,16 @@ const Navbar = () => {
       <UserGreeting />
 
       {/* desktop menu hidden md:flex */}
-      <DesktopMenu />
+      <div className='hidden justify-between md:flex md:gap-x-4'>
+        <ButtonToggleTheme />
+        <DesktopMenu />
+      </div>
 
       {/* mobile menu md:hidden */}
-      <MobileMenu />
+      <div className='flex justify-between md:hidden'>
+        <ButtonToggleTheme />
+        <MobileMenu />
+      </div>
     </header>
   )
 }

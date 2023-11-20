@@ -95,9 +95,21 @@ export default function CheckoutForm({ bookingId }: Props) {
   }
 
   return (
-    <div className='flex flex-col gap-y-1 rounded-md bg-light p-4 shadow-blue-200'>
+    <div
+      className='flex flex-col gap-y-1 
+      rounded-md 
+      border-2 
+      bg-transparent 
+      p-4
+      shadow-blue-200 dark:border
+      '
+    >
       {/* payment form */}
-      <div className='rounded-md bg-light p-4 shadow-blue-200 ring ring-blue-100'>
+      <div
+        className='rounded-md
+         bg-transparent
+          p-4 shadow-gray-100 ring ring-gray-200 dark:ring-1'
+      >
         <form id='payment-form' onSubmit={handleSubmit}>
           <PaymentElement id='payment-element' options={{ layout: 'tabs' }} />
 
@@ -105,11 +117,17 @@ export default function CheckoutForm({ bookingId }: Props) {
             btnType='submit'
             disabled={isLoading || !stripe || !elements}
             className={twMerge(
-              'btn',
-              'btn-medium md:btn-large btn-gradient mt-4 w-full sm:w-1/3'
+              'btn-medium btn-gradient mb-2 mt-4 w-full self-start text-light sm:w-1/3',
+              'hover:scale-105'
             )}
           >
-            {isLoading ? <LoadingPulse /> : <span>Pay now</span>}
+            {isLoading ? (
+              <LoadingPulse />
+            ) : (
+              <span className='text-inherit opacity-80 dark:opacity-100'>
+                Pay now
+              </span>
+            )}
           </CustomButton>
 
           {/* Show any error or success messages */}
@@ -118,20 +136,24 @@ export default function CheckoutForm({ bookingId }: Props) {
       </div>
 
       {/* fake card details */}
-      <div className='mt-4 rounded-md bg-light p-4 italic shadow-blue-200 ring ring-blue-100'>
-        <h4 className='text-lg'>Test card details</h4>
+      <div
+        className='mt-4 
+        rounded-md bg-transparent p-4 italic
+         shadow-gray-100 ring ring-gray-200 dark:ring-1'
+      >
+        <h4 className='text-lg opacity-90'>Test card details</h4>
         <ul>
           <li>
-            <span className='text-primary-dark'>Card number: </span>
-            <span className='text-gray-500'>4242 4242 4242 4242</span>
+            <span className='opacity-80'>Card number: </span>
+            <span className='opacity-70'>4242 4242 4242 4242</span>
           </li>
           <li>
-            <span className='text-primary-dark'>Expiry: </span>
-            <span className='text-gray-500'>04/25</span>
+            <span className='opacity-80'>Expiry: </span>
+            <span className='opacity-70'>04/25</span>
           </li>
           <li>
-            <span className='text-primary-dark'>CVC: </span>
-            <span className='text-gray-500'>424</span>
+            <span className='opacity-80'>CVC: </span>
+            <span className='opacity-70'>424</span>
           </li>
         </ul>
       </div>

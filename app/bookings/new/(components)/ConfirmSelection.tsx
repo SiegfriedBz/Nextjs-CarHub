@@ -7,6 +7,7 @@ import CustomButton from '@/components/buttons/CustomButton'
 import { generateCarImageUrl } from '@/utils/fetchCars'
 import { formatDate } from '@/utils/formatDate'
 import type { CarType } from '@/types'
+import { twMerge } from 'tailwind-merge'
 
 type Props = {
   selectedCar: CarType | undefined
@@ -136,6 +137,7 @@ const ConfirmSelection = ({
         </div>
         {/* reset button */}
         <CustomButton
+          className={twMerge('btn', 'btn-small btn-outline flex-end w-fit ')}
           handleClick={() => {
             setSelectedCar(undefined)
             setStartDate(new Date())
@@ -143,7 +145,6 @@ const ConfirmSelection = ({
             setIsReset(true)
             scrollToTop()
           }}
-          className='btn-small btn-outline h-1/2'
         >
           Reset
         </CustomButton>

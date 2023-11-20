@@ -9,6 +9,7 @@ import Modal from '@/components/Modal'
 import CarCardDetails from '@/components/cars/CarCardDetails'
 import CustomButton from '@/components/buttons/CustomButton'
 import type { CarType } from '@/types'
+import { twMerge } from 'tailwind-merge'
 
 type Props = {
   selectedCar?: CarType
@@ -81,11 +82,25 @@ const PickCar = ({ selectedCar, setSelectedCar }: Props) => {
             return (
               <li
                 key={index}
-                className={`flex w-full flex-col items-center justify-center rounded-md px-2 pb-4 shadow-sm hover:shadow-md sm:flex-row sm:justify-between sm:px-8 ${
-                  favCar === selectedCar
-                    ? 'bg-blue-100 shadow-blue-200 ring ring-blue-100'
-                    : 'bg-gray-100 shadow-gray-200'
-                }  `}
+                className={`flex w-full flex-col items-center justify-center
+                 rounded-md 
+                 border-2 border-gray-200 
+                 px-2 
+                 pb-4 
+                 shadow-sm
+                 hover:shadow-md
+                 dark:border
+                 sm:flex-row sm:justify-between sm:px-8 ${
+                   favCar === selectedCar
+                     ? `bg-blue-100 shadow-blue-200
+                      ring
+                    ring-blue-100
+                    dark:border-primary-light
+                      dark:bg-transparent
+                      dark:ring-1 
+                    dark:ring-primary-light`
+                     : 'bg-transparent shadow-gray-200'
+                 }  `}
               >
                 <div className='flex gap-4 md:gap-8'>
                   {/* img */}
@@ -120,11 +135,11 @@ const PickCar = ({ selectedCar, setSelectedCar }: Props) => {
                 </div>
 
                 {/* buttons */}
-                <div className='flex w-full justify-end gap-2 sm:flex-col-reverse sm:items-center sm:justify-center md:flex-row md:justify-end'>
+                <div className='flex w-full justify-end gap-2 sm:flex-col-reverse sm:items-end md:flex-row '>
                   {/* see car details btn */}
                   <CustomButton
+                    className={twMerge('btn', 'btn-small btn-outline w-fit')}
                     handleClick={() => handleSelectCarForModal(favCar)}
-                    className='btn-small btn-outline'
                   >
                     See details
                   </CustomButton>

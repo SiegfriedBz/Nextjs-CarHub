@@ -95,22 +95,24 @@ const CarCardDetails = ({ car, isPickCarView = false }: Props) => {
       </div>
       {/* details */}
       <ul className='mt-2 w-full'>
-        {Object.entries(car).map(([key, value]) => {
-          return (
-            <li key={key} className='flex w-full justify-between sm:text-lg'>
-              <span className='font-semibold capitalize'>
-                {key.replace('_', ' ')}
-              </span>
-              <span className='capitalize'>
-                {key === 'transmission'
-                  ? value === 'a'
-                    ? 'automatic'
-                    : 'manual'
-                  : value}
-              </span>
-            </li>
-          )
-        })}
+        {Object.entries(car)
+          .filter(([key]) => key !== 'make' && key !== 'model')
+          .map(([key, value]) => {
+            return (
+              <li key={key} className='flex w-full justify-between sm:text-lg'>
+                <span className='font-semibold capitalize'>
+                  {key.replace('_', ' ')}
+                </span>
+                <span className='capitalize'>
+                  {key === 'transmission'
+                    ? value === 'a'
+                      ? 'automatic'
+                      : 'manual'
+                    : value}
+                </span>
+              </li>
+            )
+          })}
       </ul>
       {/* CTA (not visible on /bookings/new page)
         - navigate to /bookings/new page

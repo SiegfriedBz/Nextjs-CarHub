@@ -82,9 +82,7 @@ const StripeSuccessPage = ({ params }: Props) => {
       /** user notifications */
       // 2. notify user with sent booking confirmation email
       if (emailResponse != undefined) {
-        toast.info(
-          `Confirmation email sent to ${userEmail} - please check your spam folder.`
-        )
+        toast.info(`Confirmation email sent to ${userEmail}.`)
       }
     } catch (error: any) {
       console.log(error)
@@ -110,8 +108,8 @@ const StripeSuccessPage = ({ params }: Props) => {
           <>
             <BookingDetails userEmail={userEmail} booking={confirmedBooking} />
             <Link
-              href='/bookings'
-              className='btn-small md:btn-medium btn-gradient mt-2 w-fit self-end'
+              href='/bookings#my-bookings'
+              className='btn btn-small md:btn-medium btn-gradient mt-4 w-fit self-end'
             >
               My Bookings
             </Link>

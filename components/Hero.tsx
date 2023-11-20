@@ -3,7 +3,6 @@
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
-import { twMerge } from 'tailwind-merge'
 import CustomButton from '@/components/buttons/CustomButton'
 
 const MotionImage = motion(Image)
@@ -21,27 +20,19 @@ const Hero = () => {
       className='flex scroll-mt-[6rem] flex-col items-center justify-center gap-4 md:flex-row md:gap-0'
     >
       {/* HERO TEXT CONTAINER */}
-      <div className='md:w-1/2'>
-        <h1
-          className={twMerge(
-            'h1',
-            'bg-gradient-to-r from-primary-dark to-dark/70 bg-clip-text text-transparent md:leading-[4rem]'
-          )}
-        >
-          Find, book, rent a car - quick and super easy!
-        </h1>
-        <h2
-          className={twMerge(
-            'h2',
-            'bg-gradient-to-r from-primary-dark to-dark/70 bg-clip-text text-transparent opacity-70 md:leading-10'
-          )}
-        >
-          Streamline your car rental experience with our effortless booking
-          process.
-        </h2>
+      <div className='flex flex-col gap-4 md:w-1/2 md:gap-8'>
+        <div className='flex flex-col'>
+          <h1 className='mt-0'>
+            Find, book, rent a car - quick and super easy!
+          </h1>
+          <h2>
+            Streamline your car rental experience with our effortless booking
+            process.
+          </h2>
+        </div>
 
         <CustomButton
-          className='btn-medium sm:btn-large btn-gradient my-4 gap-4'
+          className='btn-medium sm:btn-large btn-gradient mb-2 self-start text-light sm:mb-0'
           handleClick={() => scrollToCatalog()}
         >
           Explore cars

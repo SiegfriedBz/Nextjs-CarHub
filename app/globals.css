@@ -7,59 +7,102 @@
 }
 
 body {
+  @apply bg-light text-primary-dark dark:bg-gradient-to-r dark:from-slate-900 dark:to-slate-800 dark:text-light;
 }
 
 @layer base {
   h1,
+  .h1,
+  h2,
+  .h2,
+  h3,
+  .h3,
+  h4,
+  .h4,
+  h5,
+  .h5,
+  h6,
+  .h6 {
+    @apply bg-gradient-to-r from-primary-dark to-primary bg-clip-text text-transparent 
+      dark:bg-gradient-to-r dark:from-light dark:to-light/70 dark:bg-clip-text dark:text-transparent;
+  }
+
+  span {
+    @apply text-primary-dark dark:text-light;
+  }
+
+  h1,
   .h1 {
-    @apply my-4 text-3xl font-semibold text-primary-dark sm:text-4xl md:text-5xl md:font-bold lg:text-6xl;
+    @apply my-4 text-3xl font-semibold sm:text-4xl md:text-5xl md:font-bold lg:text-6xl;
   }
 
   h2,
   .h2 {
-    @apply my-2 text-xl text-primary-dark sm:text-2xl md:text-3xl lg:text-4xl;
+    @apply my-2 text-xl sm:text-2xl md:text-3xl lg:text-4xl;
   }
 
   h3,
   .h3 {
-    @apply my-1 text-xl text-primary-dark md:text-2xl;
+    @apply my-1 text-lg sm:text-xl md:text-2xl;
   }
 
   h4,
   .h4 {
-    @apply text-sm text-primary-dark sm:text-lg md:text-xl;
+    @apply text-sm sm:text-lg md:text-xl;
   }
 
   h5,
   .h5 {
-    @apply text-sm text-primary-dark md:text-base;
-  }
-  h6,
-  .h6 {
-    @apply text-sm text-primary-dark;
+    @apply text-sm md:text-base;
   }
 
+  h6,
+  .h6,
   p {
-    @apply text-primary-dark;
+    @apply text-sm;
   }
 
   section {
     @apply p-4 lg:px-16 xl:px-32 2xl:px-48;
   }
+
   section.section-top {
-    @apply mt-[var(--navbar-height)] min-h-[calc(100dvh-var(--navbar-height))];
+    @apply mt-[var(--navbar-height)] 
+      min-h-[calc(100dvh-var(--navbar-height))];
   }
 }
 
 @layer components {
   .header {
-    @apply fixed left-0 right-0 top-0 z-[1000] flex h-[var(--navbar-height)]
-      w-full items-center justify-between border-b border-primary-dark bg-light p-4 lg:px-16 xl:px-32 2xl:px-48;
+    @apply fixed left-0 right-0 top-0 z-[1000] 
+      flex 
+      h-[var(--navbar-height)]
+      w-full items-center justify-between 
+      border-b 
+    border-primary-dark 
+    bg-light 
+      p-4 
+    text-primary-dark 
+      dark:bg-gradient-to-r 
+    dark:from-slate-900 
+    dark:to-slate-800 
+    dark:text-light 
+      lg:px-16 xl:px-32 2xl:px-48;
   }
 
   .footer {
-    @apply flex 
-      h-[calc(var(--navbar-height)*2/3)] items-center justify-between border-t border-primary-dark bg-light p-4 md:h-[var(--navbar-height)] lg:px-16 xl:px-32 2xl:px-48;
+    @apply flex h-[calc(var(--navbar-height)*5/6)] 
+      items-center justify-between 
+      border-t 
+    border-primary-dark
+    bg-light p-4 
+    text-primary-dark 
+      dark:bg-gradient-to-r 
+    dark:from-slate-900 
+    dark:to-slate-800 
+    dark:text-light 
+      md:h-[var(--navbar-height)] 
+      lg:px-16 xl:px-32 2xl:px-48;
   }
 
   /** hero bg image for desktop */
@@ -85,7 +128,19 @@ body {
   }
 
   .btn-outline {
-    @apply border border-gray-300 text-dark/50 transition duration-500 ease-in-out hover:scale-100 hover:bg-gradient-to-r hover:from-primary-dark hover:to-primary-light hover:text-light;
+    @apply border 
+      border-gray-300 
+      bg-transparent 
+      text-primary-dark transition duration-500 
+        ease-in-out 
+        hover:scale-100 
+        hover:bg-gradient-to-r 
+      hover:from-primary-dark 
+      hover:to-primary-light
+        
+      hover:text-light 
+      dark:text-light/80 
+      dark:hover:text-light;
   }
 
   .btn-gradient {
@@ -120,9 +175,9 @@ body {
   }
 
   /** text */
-  .text-gradient {
-    @apply bg-gradient-to-r from-primary-dark to-primary-light bg-clip-text font-bold text-transparent;
-  }
+  /* . {
+    @apply bg-gradient-to-r from-primary-dark to-primary-light bg-clip-text text-transparent;
+  } */
 
   /** SearchBar */
   .search-make-combo-wrapper {
@@ -133,11 +188,22 @@ body {
   .search-model-input {
     min-width: 8rem;
     max-width: 100%;
-    @apply h-12 rounded-md bg-white p-2 outline-none sm:w-[25vw];
+    @apply h-12 
+      rounded-md 
+      bg-white 
+      px-2 outline-none 
+      dark:bg-transparent 
+      sm:w-[25vw];
   }
 
   /** MobileMenu */
   .mobile-menu {
-    @apply absolute bottom-0 left-0 right-0 top-[var(--navbar-height)] z-[1000] flex h-[calc(100vh-var(--navbar-height))] flex-col items-center justify-center bg-gradient-to-r from-primary to-primary-light;
+    @apply absolute bottom-0 left-0 right-0 top-[var(--navbar-height)]
+     z-[1000] 
+     flex h-[calc(100vh-var(--navbar-height))] 
+     flex-col items-center justify-center 
+     bg-gradient-to-r from-primary to-primary-light
+
+     dark:bg-gradient-to-r dark:from-slate-900 dark:to-slate-800 dark:text-light;
   }
 }

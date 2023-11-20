@@ -23,12 +23,12 @@ const CustomButton = ({
       onClick={handleClick}
       className={twMerge(
         `btn flex items-center justify-center`,
-        `${className} ${
-          disabled ? 'cursor-not-allowed opacity-50 hover:scale-100' : ''
-        }`
+        `${className}  
+         ${disabled ? 'cursor-not-allowed opacity-50 hover:scale-100' : ''} 
+        `
       )}
     >
-      <span>{children}</span>
+      {children}
     </button>
   )
 }

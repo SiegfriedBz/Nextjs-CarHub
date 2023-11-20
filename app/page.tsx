@@ -1,7 +1,5 @@
 export const dynamic = 'force-dynamic'
 
-import { getServerSession } from 'next-auth'
-import { authOptions } from '@/utils/authOptions'
 import Hero from '@/components/Hero'
 import CarCatalog from '@/components/cars/CarCatalog'
 import { fetchCars } from '@/utils/fetchCars'
@@ -36,8 +34,6 @@ async function getData({ searchParams }: Props) {
 
 export default async function Home({ searchParams }: Props) {
   const cars = await getData({ searchParams })
-  const session = await getServerSession(authOptions)
-  console.log(session)
 
   return (
     <main className='overflow-hidden'>
@@ -46,10 +42,8 @@ export default async function Home({ searchParams }: Props) {
       </section>
 
       <section id='catalog' className='scroll-mt-24'>
-        <h2 className='text-gradient my-4'>Car Catalog</h2>
-        <h3 className='text-gradient italic opacity-70'>
-          Explore cars you might like
-        </h3>
+        <h2 className='font-extrabold'>Car Catalog</h2>
+        <h3 className='italic'>Explore out the cars you might like</h3>
         <CarCatalog cars={cars} />
       </section>
     </main>

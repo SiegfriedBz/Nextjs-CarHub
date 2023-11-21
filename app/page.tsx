@@ -1,10 +1,9 @@
-export const dynamic = 'force-dynamic'
-
+import { Suspense } from 'react'
 import Hero from '@/components/Hero'
-import CarCatalog from '@/components/cars/CarCatalog'
-import { fetchCars } from '@/utils/fetchCars'
+import Catalog from '@/components/cars/Catalog'
+import LoadingPulse from '@/components/LoadingPulse'
 
-type Props = {
+export type SearchParamsProps = {
   searchParams: {
     make?: string
     model?: string
@@ -14,27 +13,7 @@ type Props = {
   }
 }
 
-async function getData({ searchParams }: Props) {
-  try {
-    // fetch cars
-    const cars = await fetchCars({
-      make: searchParams.make || 'Audi',
-      model: searchParams.model || '',
-      year: searchParams.year || 2021,
-      fuel_type: searchParams.fuel_type || '',
-      limit: searchParams.limit || 4,
-    })
-
-    return cars || []
-  } catch (error) {
-    console.log(error)
-    return []
-  }
-}
-
-export default async function Home({ searchParams }: Props) {
-  const cars = await getData({ searchParams })
-
+export default function Home({ searchParams }: SearchParamsProps) {
   return (
     <main className='overflow-hidden'>
       <section id='hero' className='section-top flex flex-col justify-center'>
@@ -44,7 +23,10 @@ export default async function Home({ searchParams }: Props) {
       <section id='catalog' className='scroll-mt-24'>
         <h2 className='font-extrabold'>Car Catalog</h2>
         <h3 className='italic'>Explore out the cars you might like</h3>
-        <CarCatalog cars={cars} />
+
+        <Suspense fallback={<LoadingPulse />}>
+          <Catalog searchParams={searchParams} />
+        </Suspense>
       </section>
     </main>
   )

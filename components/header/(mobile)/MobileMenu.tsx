@@ -61,7 +61,7 @@ const MobileMenu = () => {
                         <h2
                           className={twMerge(
                             'h2',
-                            ' flex items-center justify-center gap-2 text-3xl tracking-wide text-light/80'
+                            ' flex items-center justify-center gap-4 text-3xl tracking-wide text-light/70'
                           )}
                         >
                           <Image
@@ -76,7 +76,7 @@ const MobileMenu = () => {
                         <h2
                           className={twMerge(
                             'h2',
-                            'text-3xl tracking-wide text-light/80'
+                            'text-3xl tracking-wide text-light/70'
                           )}
                         >
                           {link.title}

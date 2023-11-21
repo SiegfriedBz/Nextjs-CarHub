@@ -68,44 +68,11 @@ const Footer = () => {
             >
               Company
             </Link>
-            <ul>
-              <li>
-                <Link
-                  href='/company#tos'
-                  className='h6 underline-gradient-link'
-                >
-                  Terms of Service
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href='/company#privacy-policy'
-                  className='h6 underline-gradient-link'
-                >
-                  Privacy Policy
-                </Link>
-              </li>
-            </ul>
           </li>
           <li className='text-center'>
             <Link href='/about' className='h5 underline-gradient-link  text-lg'>
               About
             </Link>
-            <ul>
-              <li>
-                <Link
-                  href='/about#how-it-works'
-                  className='h6 underline-gradient-link'
-                >
-                  How it works
-                </Link>
-              </li>
-              <li>
-                <Link href='/about' className='h6 underline-gradient-link'>
-                  Featured
-                </Link>
-              </li>
-            </ul>
           </li>
         </ul>
         {/* social */}

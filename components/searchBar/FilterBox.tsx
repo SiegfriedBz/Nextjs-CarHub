@@ -1,9 +1,9 @@
 'use client'
 
 import { useCallback, useEffect, useState, Fragment } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { Listbox, Transition } from '@headlessui/react'
 import DoubleChevron from './DoubleChevron'
-import { useRouter } from 'next/navigation'
 
 type Props = {
   paramName: string
@@ -11,14 +11,16 @@ type Props = {
 }
 
 const FilterBox = ({ paramName, options }: Props) => {
+  // search params
+  const readOnlySearchParams = useSearchParams()
+  // router
   const router = useRouter()
-
   // state
   const [selected, setSelected] = useState(options[0])
 
-  // handlers
+  // effects - handleFilter
   const handleFilter = useCallback(() => {
-    const newSearchParams = new URLSearchParams(window.location.search)
+    const newSearchParams = new URLSearchParams(readOnlySearchParams)
 
     if (selected?.value !== '') {
       newSearchParams.set(paramName, selected.value)
@@ -29,19 +31,34 @@ const FilterBox = ({ paramName, options }: Props) => {
     const newSearchParamsString = newSearchParams.toString()
 
     let newPath: string = ''
-    if (newSearchParamsString !== '') {
+    if (!newSearchParamsString) {
       newPath = `${window.location.pathname}` as string
     } else {
       newPath = `${window.location.pathname}?${newSearchParamsString}` as string
     }
 
     router.push(newPath, { scroll: false })
-  }, [selected, paramName, router])
+  }, [selected, paramName, router, readOnlySearchParams])
 
-  // effects - handleFilter
   useEffect(() => {
     handleFilter()
   }, [handleFilter])
+
+  // effects - handle reset filter
+  const resetFilter = useCallback(() => {
+    if (!readOnlySearchParams.has(paramName)) {
+      setSelected(options[0])
+    }
+  }, [paramName, options, readOnlySearchParams])
+
+  useEffect(() => {
+    resetFilter()
+  }, [resetFilter])
+
+  // handler - handleSelect
+  const handleSelect = (e: { title: string; value: string }): void => {
+    setSelected(e)
+  }
 
   return (
     <div
@@ -56,7 +73,7 @@ const FilterBox = ({ paramName, options }: Props) => {
       dark:border
       dark:bg-transparent '
     >
-      <Listbox value={selected} onChange={(e) => setSelected(e)}>
+      <Listbox value={selected} onChange={handleSelect}>
         <div className='relative '>
           <Listbox.Button>
             <div className='flex w-[6.5rem] justify-between px-2'>

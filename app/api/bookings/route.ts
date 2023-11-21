@@ -1,48 +1,7 @@
 import { NextResponse } from 'next/server'
-import { redirect } from 'next/navigation'
 import { prisma } from '@/utils/prismaClient'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/utils/authOptions'
-
-export async function GET(request: Request) {
-  const session = await getServerSession(authOptions)
-
-  /** get user from session */
-  const userIsAdmin = !!session?.user?.isAdmin
-  const userEmail = session?.user?.email
-
-  /** redirect to sign in page if user not logged in */
-  if (!userEmail) {
-    return redirect('/api/auth/signin')
-  }
-
-  /** get full user data from db */
-  const fullUser = await prisma.user.findUnique({
-    where: { email: userEmail as string },
-  })
-
-  /** return 401 status if no user found */
-  if (!fullUser?.id) {
-    return NextResponse.json(`Error: User not found`, { status: 401 })
-  }
-
-  try {
-    /**
-     * get all bookings if user is admin
-     * otherwise, get only bookings for the logged in user
-     */
-    const bookings = await prisma.booking.findMany({
-      where: userIsAdmin ? {} : { userId: fullUser?.id as string },
-      orderBy: {
-        createdAt: 'desc',
-      },
-    })
-
-    return NextResponse.json({ bookings }, { status: 200 })
-  } catch (error) {
-    return NextResponse.json(`Error: ${error}`, { status: 500 })
-  }
-}
 
 export async function POST(request: Request) {
   /** get user from session */

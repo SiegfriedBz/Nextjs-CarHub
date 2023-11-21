@@ -19,7 +19,6 @@ const SearchBar = () => {
   const [selectedMake, setSelectedMake] = useState<CarType['make']>(makes[0])
   const [selectedModel, setSelectedModel] = useState<CarType['model']>('')
 
-  const pathName = window.location.pathname
   // handlers
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -38,6 +37,7 @@ const SearchBar = () => {
       newSearchParams.delete('model')
     }
 
+    const pathName = window.location.pathname
     const stringParams = newSearchParams.toString()
     if (!stringParams) {
       return router.push(pathName, { scroll: false })
@@ -49,6 +49,7 @@ const SearchBar = () => {
   }
 
   const handleReset = () => {
+    const pathName = window.location.pathname
     setSelectedMake('Audi')
     setSelectedModel('')
     router.push(pathName, { scroll: false })

@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { twMerge } from 'tailwind-merge'
 import DesktopSignin from './DesktopSignin'
 
 const DESKTOP_MENU_LINKS = [
@@ -26,6 +25,7 @@ const DesktopMenu = () => {
           </li>
         ))}
       </ul>
+
       {/* auth */}
       <DesktopSignin />
     </div>

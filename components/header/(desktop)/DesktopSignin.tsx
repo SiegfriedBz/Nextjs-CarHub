@@ -1,12 +1,11 @@
 'use client'
 
+import { signOut, useSession } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 import Image from 'next/image'
-
-import { signIn, signOut, useSession } from 'next-auth/react'
 import LoadingPulse from '@/components/LoadingPulse'
 import CustomButton from '@/components/buttons/CustomButton'
 import { twMerge } from 'tailwind-merge'
-import { useRouter } from 'next/navigation'
 
 const DesktopSignin = () => {
   // router

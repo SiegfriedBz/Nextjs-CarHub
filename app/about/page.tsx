@@ -35,19 +35,19 @@ const About = () => {
       <br />
       <h3 className='font-semibold'>Our Values</h3>
       <ul className='flex list-disc flex-col gap-y-4'>
-        <li className='ps-4 text-justify'>
+        <li className='ms-4 mt-2 text-justify'>
           <strong>Customer-Centric Approach:</strong> At Car Hub, our customers
           are at the center of everything we do. We are dedicated to
           understanding your needs and providing a service that exceeds your
           expectations.
         </li>
-        <li className='ps-4 text-justify'>
+        <li className='ms-4 text-justify'>
           <strong>Innovation:</strong> We embrace technology to enhance your car
           rental experience. From a user-friendly app to secure payment options,
           we leverage innovation to make your journey with Car Hub seamless and
           enjoyable.
         </li>
-        <li className='ps-4 text-justify'>
+        <li className='ms-4 text-justify'>
           <strong>Transparency:</strong> Honesty and transparency are the
           foundations of our business. We believe in providing clear
           information, straightforward pricing, and a reliable platform for all

@@ -28,7 +28,7 @@ const SignInPage = () => {
         <CustomButton
           className={twMerge(
             'btn',
-            'btn-small md:btn-medium lg:btn-large btn-outline mb-4 mt-8 inline-flex w-fit items-center justify-center gap-2 whitespace-nowrap normal-case'
+            'btn-medium lg:btn-large btn-outline my-4 inline-flex w-fit items-center justify-center gap-2 whitespace-nowrap normal-case'
           )}
           handleClick={() => signIn('google', { callbackUrl: '/' })}
         >

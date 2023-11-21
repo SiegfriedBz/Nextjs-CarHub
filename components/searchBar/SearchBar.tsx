@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons'
 import SearchMakeCombo from './SearchMakeCombo'
@@ -9,17 +9,22 @@ import { makes } from '@/constants/'
 import type { CarType } from '@/types'
 
 const SearchBar = () => {
+  // search params
+  const readOnlySearchParams = useSearchParams()
+
+  // router
   const router = useRouter()
 
   //  state
   const [selectedMake, setSelectedMake] = useState<CarType['make']>(makes[0])
   const [selectedModel, setSelectedModel] = useState<CarType['model']>('')
 
+  const pathName = window.location.pathname
   // handlers
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    const newSearchParams = new URLSearchParams(window.location.search)
+    const newSearchParams = new URLSearchParams(readOnlySearchParams)
 
     if (selectedMake) {
       newSearchParams.set('make', selectedMake)
@@ -35,9 +40,9 @@ const SearchBar = () => {
 
     const stringParams = newSearchParams.toString()
     if (!stringParams) {
-      return router.push(window.location.pathname, { scroll: false })
+      return router.push(pathName, { scroll: false })
     } else {
-      return router.push(`${window.location.pathname}?${stringParams}`, {
+      return router.push(`${pathName}?${stringParams}`, {
         scroll: false,
       })
     }
@@ -46,7 +51,7 @@ const SearchBar = () => {
   const handleReset = () => {
     setSelectedMake('Audi')
     setSelectedModel('')
-    router.push(window.location.pathname, { scroll: false })
+    router.push(pathName, { scroll: false })
   }
 
   return (

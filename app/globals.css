@@ -124,16 +124,23 @@ body {
 
   .btn-outline {
     @apply border 
-      border-gray-300 
-      bg-transparent 
-      text-primary-dark transition duration-500 
-        ease-in-out 
+      border-primary-dark 
+        border-opacity-70
+
+        text-primary-dark
+
+        transition
+        duration-500 
+        ease-in-out
         hover:scale-100 
         hover:bg-gradient-to-r 
       hover:from-primary-dark 
-      hover:to-primary-light
-        
-      hover:text-light 
+      hover:to-primary-light 
+      hover:text-light
+      dark:border-primary-light
+
+        dark:border-opacity-100
+        dark:bg-transparent 
       dark:text-light/80 
       dark:hover:text-light;
   }

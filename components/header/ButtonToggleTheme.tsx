@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { useColorMode } from '@/app/hooks/useColorMode'
+import { useColorMode } from '@/hooks/useColorMode'
 import { MoonIcon, SunIcon } from '../header/Icons'
 
 const ButtonToggleTheme = () => {

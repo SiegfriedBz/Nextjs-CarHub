@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useColorMode } from '@/app/hooks/useColorMode'
-import { MoonIcon, SunIcon } from '@/components/Icons'
+import { MoonIcon, SunIcon } from '../header/Icons'
 
 const ButtonToggleTheme = () => {
   const [isClient, setIsClient] = useState(false)
@@ -20,9 +20,9 @@ const ButtonToggleTheme = () => {
     <>
       {isClient ? (
         colorMode === 'light' ? (
-          <MoonIcon className='w-[34px] md:w-[35px]' />
+          <MoonIcon className='w-[34px]' />
         ) : (
-          <SunIcon className='w-[35px] md:w-[36px]' />
+          <SunIcon className='w-[35px]' />
         )
       ) : (
         ''

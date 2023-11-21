@@ -1,10 +1,10 @@
 import Link from 'next/link'
 import { twMerge } from 'tailwind-merge'
 import Logo from './Logo'
-import UserGreeting from './UserGreeting'
 import DesktopMenu from './(desktop)/DesktopMenu'
 import MobileMenu from './(mobile)/MobileMenu'
-import ButtonToggleTheme from '@/components/buttons/ButtonToggleTheme'
+import UserGreeting from './UserGreeting'
+import ButtonToggleTheme from './ButtonToggleTheme'
 
 const Navbar = () => {
   return (

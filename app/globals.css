@@ -47,19 +47,14 @@ body {
   }
 
   h4,
-  .h4 {
+  .h4,
+  p {
     @apply text-sm sm:text-lg md:text-xl;
   }
 
   h5,
   .h5 {
     @apply text-sm md:text-base;
-  }
-
-  h6,
-  .h6,
-  p {
-    @apply text-sm;
   }
 
   section {
@@ -174,11 +169,6 @@ body {
       active:after:bg-gradient-to-r active:after:from-primary-dark  active:after:to-primary-light;
   }
 
-  /** text */
-  /* . {
-    @apply bg-gradient-to-r from-primary-dark to-primary-light bg-clip-text text-transparent;
-  } */
-
   /** SearchBar */
   .search-make-combo-wrapper {
     min-width: 8rem;
@@ -199,11 +189,16 @@ body {
   /** MobileMenu */
   .mobile-menu {
     @apply absolute bottom-0 left-0 right-0 top-[var(--navbar-height)]
-     z-[1000] 
-     flex h-[calc(100vh-var(--navbar-height))] 
-     flex-col items-center justify-center 
-     bg-gradient-to-r from-primary to-primary-light
-
-     dark:bg-gradient-to-r dark:from-slate-900 dark:to-slate-800 dark:text-light;
+      z-[1000] 
+      flex h-[calc(100vh-var(--navbar-height))] 
+      flex-col items-center justify-center 
+      bg-gradient-to-r 
+    from-primary
+    to-primary-light
+    text-light/70
+      dark:bg-gradient-to-r 
+    dark:from-slate-900 
+    dark:to-slate-800 
+    dark:text-light;
   }
 }

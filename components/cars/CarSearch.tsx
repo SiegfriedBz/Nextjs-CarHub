@@ -1,17 +1,12 @@
 'use client'
 
 import { useRef } from 'react'
-import CarList from './CarList'
 import SearchBar from '@/components/searchBar/SearchBar'
 import FilterBox from '@/components/searchBar/FilterBox'
+import ButtonScrollToTop from '@/components/buttons/ButtonScrollToTop'
 import { years, fuels } from '@/constants'
-import type { CarType } from '@/types'
 
-type Props = {
-  cars: CarType[]
-}
-
-const CarCatalog = ({ cars }: Props) => {
+const CarSearch = () => {
   const topRef = useRef<HTMLDivElement>(null)
 
   const scrollToTop = () => {
@@ -21,7 +16,7 @@ const CarCatalog = ({ cars }: Props) => {
   }
 
   return (
-    <div ref={topRef} className='relative scroll-mt-52'>
+    <div ref={topRef} className='scroll-mt-52'>
       {/* cars search */}
       <SearchBar />
       {/* cars filter */}
@@ -30,10 +25,10 @@ const CarCatalog = ({ cars }: Props) => {
         <FilterBox paramName='fuel_type' options={fuels} />
       </div>
 
-      {/* cars list */}
-      <CarList cars={cars} scrollToTop={scrollToTop} />
+      {/* scrollToTop button */}
+      <ButtonScrollToTop scrollToTop={scrollToTop} />
     </div>
   )
 }
 
-export default CarCatalog
+export default CarSearch

@@ -3,15 +3,13 @@
 import { useRouter } from 'next/navigation'
 import CarCard from './CarCard'
 import ButtonShowMore from '@/components/buttons/ButtonShowMore'
-import ButtonScrollToTop from '../buttons/ButtonScrollToTop'
 import type { CarType } from '@/types'
 
 type Props = {
   cars: CarType[]
-  scrollToTop: () => void
 }
 
-const CarList = ({ cars, scrollToTop }: Props) => {
+const CarList = ({ cars }: Props) => {
   const router = useRouter()
 
   // handlers
@@ -28,11 +26,8 @@ const CarList = ({ cars, scrollToTop }: Props) => {
               return <CarCard key={index} car={car} />
             })}
           </div>
-          <div className='relative'>
-            <ButtonShowMore />
-            {/* scrollToTop button */}
-            <ButtonScrollToTop scrollToTop={scrollToTop} />
-          </div>
+
+          <ButtonShowMore />
         </>
       ) : (
         <div className='mt-4 flex flex-col items-center'>

@@ -12,7 +12,7 @@ const ButtonScrollToTop = ({ scrollToTop }: Props) => {
     <button
       type='button'
       onClick={scrollToTop}
-      className='absolute right-0 top-1/2 flex -translate-y-1/2 items-center justify-center rounded-full bg-gradient-to-r from-primary-dark to-primary-light p-1 outline-none'
+      className='absolute bottom-1 right-0 flex items-center justify-center rounded-full bg-gradient-to-r from-primary-dark to-primary-light p-1 outline-none'
     >
       <FontAwesomeIcon
         icon={faCircleUp}

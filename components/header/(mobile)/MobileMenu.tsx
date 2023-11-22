@@ -31,7 +31,7 @@ const MobileMenu = () => {
 
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <motion.div
+          <motion.nav
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -100 }}
@@ -87,7 +87,7 @@ const MobileMenu = () => {
                 )
               })}
             </ul>
-          </motion.div>
+          </motion.nav>
         )}
       </AnimatePresence>
     </div>

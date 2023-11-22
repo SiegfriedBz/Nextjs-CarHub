@@ -15,7 +15,7 @@ const DESKTOP_MENU_LINKS = [
 
 const DesktopMenu = () => {
   return (
-    <div className='hidden md:flex md:items-center md:gap-x-4'>
+    <nav className='hidden md:flex md:items-center md:gap-x-4'>
       <ul className='flex gap-x-4'>
         {DESKTOP_MENU_LINKS.map((link) => (
           <li key={link.id} className={link.className}>
@@ -28,7 +28,7 @@ const DesktopMenu = () => {
 
       {/* auth */}
       <DesktopSignin />
-    </div>
+    </nav>
   )
 }
 

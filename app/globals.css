@@ -86,7 +86,7 @@ body {
   }
 
   .footer {
-    @apply flex h-[calc(var(--navbar-height)*5/6)] 
+    @apply flex h-[calc(var(--navbar-height))] 
       items-center justify-between 
       border-t 
     border-primary-dark
@@ -96,8 +96,24 @@ body {
     dark:from-slate-900 
     dark:to-slate-800 
     dark:text-light 
-      md:h-[var(--navbar-height)] 
       lg:px-16 xl:px-32 2xl:px-48;
+  }
+
+  /** MobileMenu */
+  .mobile-menu {
+    @apply absolute left-0 right-0
+    top-[var(--navbar-height)]
+      z-[1000] 
+      flex h-[calc(100vh-var(--navbar-height))] 
+      flex-col items-center justify-center 
+      bg-gradient-to-r 
+    from-primary
+    to-primary-light
+    text-light/70
+      dark:bg-gradient-to-r 
+    dark:from-slate-900 
+    dark:to-slate-800
+    dark:text-light;
   }
 
   /** hero bg image for desktop */
@@ -191,21 +207,5 @@ body {
       px-2 outline-none 
       dark:bg-transparent 
       sm:w-[25vw];
-  }
-
-  /** MobileMenu */
-  .mobile-menu {
-    @apply absolute bottom-0 left-0 right-0 top-[var(--navbar-height)]
-      z-[1000] 
-      flex h-[calc(100dvh-var(--navbar-height))] 
-      flex-col items-center justify-center 
-      bg-gradient-to-r 
-    from-primary
-    to-primary-light
-    text-light/70
-      dark:bg-gradient-to-r 
-    dark:from-slate-900 
-    dark:to-slate-800 
-    dark:text-light;
   }
 }

@@ -19,16 +19,16 @@ const Navbar = () => {
       {/* signed in user name */}
       <UserGreeting />
 
-      {/* desktop menu hidden md:flex */}
-      <div className='hidden justify-between md:flex md:gap-x-4'>
+      <div className='flex justify-between gap-x-4'>
         <ButtonToggleTheme />
-        <DesktopMenu />
-      </div>
-
-      {/* mobile menu md:hidden */}
-      <div className='flex justify-between md:hidden'>
-        <ButtonToggleTheme />
-        <MobileMenu />
+        {/* desktop menu hidden md:flex */}
+        <div className='hidden md:flex'>
+          <DesktopMenu />
+        </div>
+        {/* mobile menu md:hidden */}
+        <div className='flex md:hidden'>
+          <MobileMenu />
+        </div>
       </div>
     </header>
   )

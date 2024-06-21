@@ -63,7 +63,7 @@ body {
 
   section.section-top {
     @apply mt-[var(--navbar-height)] 
-      min-h-[calc(100dvh-var(--navbar-height))];
+      min-h-[calc(100svh-var(--navbar-height))];
   }
 }
 

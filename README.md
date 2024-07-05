@@ -13,7 +13,7 @@ The backend utilizes Prisma as the ORM with a PostgreSQL database.
 - [Building for Production](#building-for-production)
 - [Running the Production Server](#running-the-production-server)
 - [Technologies Used](#technologies-used)
-- [Live Demo](#live-demo)
+- [Live Demo](#live-demo) 🚀
 
 # Prerequisites
 Before you begin, ensure you have the following installed and set up:
